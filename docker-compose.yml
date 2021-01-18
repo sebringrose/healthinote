@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        - NPM_USER
+        - NPM_PASS
+        - NPM_EMAIL
+        - NPM_REGISTRY
+    command: /launch.sh
+    privileged: true
+    volumes:
+      - ../../configs/healthinote-public-website:/sandbox
+    ports:
+      - "3000:3000"
