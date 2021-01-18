@@ -29,9 +29,9 @@ const content = {
             "Receive health information recommened to you by your healthcare professional via digital health information prescriptions."
         ],
         badge: <>
-            <img src={orchaApproved} alt="orcha-approved"/>
+            <img src={orchaApproved} style={{ width: "100%", height: "auto" }} alt="orcha-approved"/>
             <CustomText weight="bold" color={theme.color.blue}>APPROVED</CustomText>
-            <img src={sfcEndorsed} alt="skillsforcare-endorsed"/>
+            <img src={sfcEndorsed} style={{ width: "100%", height: "auto" }} alt="skillsforcare-endorsed"/>
         </>
     },
     partners: {
