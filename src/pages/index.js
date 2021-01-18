@@ -50,7 +50,7 @@ const content = {
                             "Optimize your consultation time by sending recommended, trusted information that can be viewed outside of consultation time."
                         ]
                     }} />
-                    <AppSection reverse background={theme.color.backgroundBlue} content={{
+                    <AppSection reverse background="white" content={{
                         appImage: require('../images/healthinote-iphoneX.png'),
                         list: {
                             heading: "Using Healthinote Pro, you can find and share health information that is:",
@@ -119,7 +119,7 @@ const content = {
                             "Cognitant uses visual and interactive techniques to communicate healthcare topics effectively, driving increases in patient understanding and adherance to medication and positive lifestlye behaviours.",
                         ]
                     }} />
-                    <AppSection reverse background={theme.color.backgroundBlue} content={{
+                    <AppSection reverse background="white" content={{
                         appImage: require('../images/healthinote-iphoneX.png'),
                         subtitle: "Where appropriate, the health information created can feature in the Healthinote library, allowing healthcare professionals to find and share the information with their patients as part of their health information prescriptions.",
                         list: {

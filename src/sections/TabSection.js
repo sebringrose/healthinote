@@ -40,8 +40,8 @@ const Tab = styled.div`
     cursor: pointer;
     text-align: center;
     font-weight: ${({active}) => active ? 600 : 400};
-    color: ${({active}) => active ? theme.color.orange : theme.color.blue};
-    background-color: ${({active}) => active ? 'white' : theme.color.backgroundBlue};
+    color: ${({active}) => active ? theme.color.orange : 'white'};
+    background-color: ${({active}) => active ? theme.color.backgroundBlue : theme.color.blue};
 `
 
 const TabContent = styled.div`
@@ -49,5 +49,5 @@ const TabContent = styled.div`
     display: ${({active}) => active ? "flex" : "none"};
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: ${theme.color.backgroundBlue};
 `

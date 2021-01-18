@@ -51,6 +51,6 @@ const HeroBadges = styled.div`
     background-color: white;
     text-align: center;
     border-radius: 0.5rem;
-    box-shadow: 0px 0px 14px rgba(0,0,0,0.1);
+    /* box-shadow: 0px 0px 14px rgba(0,0,0,0.1); */
 `
 

@@ -25,7 +25,7 @@ const Wrapper = styled.div`
     font-family: mont;
     display: flex;
     flex-direction: column;
-    background-color: ${theme.color.backgroundBlue};
+    background-color: white;
 `;
 
 const Modal = styled.div`
