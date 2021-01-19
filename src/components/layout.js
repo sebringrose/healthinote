@@ -43,7 +43,7 @@ export default function Layout({children}) {
       }}
     >
       <p style={{ fontSize: "1.5rem" }}>Do you accept the use of cookies on this site?</p>
-      <p style={{ fontSize: "1rem" }}>We use cookies for anonymous anayltics purposes only.&nbsp;<a href="https://cognitant.com/privacy">Learn more</a></p>
+      <p style={{ fontSize: "1rem" }}>We use cookies for anonymous analytics purposes only.&nbsp;<a href="https://cognitant.com/privacy">Learn more</a></p>
     </CookieConsent>
     {modal && <Modal onClick={() => setModal(false)}>
       <ModalContent onClick={(e) => e.stopPropagation()}>{modal}</ModalContent>
