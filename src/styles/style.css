@@ -21,3 +21,10 @@ a {
     font-weight: 600;
     text-decoration: none;
 }
+
+.cookie-buttons {
+    display: flex;
+    flex-direction: column-reverse;
+    align-self: flex-end;
+    padding: 1rem;
+}
