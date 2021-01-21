@@ -101,8 +101,8 @@ const content = {
                         ],
                         download: {
                             text: "Download the app now to explore our Healthinote library of clear and reliable health information",
-                            iosLink: "INSERT IOS LINK HERE",
-                            googleLink: "INSERT GOOGLE LINK HERE"
+                            iosLink: "https://apps.apple.com/app/healthinote/id1449132966",
+                            googleLink: "https://play.google.com/store/apps/details?id=com.healthinote.app"
                         }
                     }} />
                 </>
