@@ -14,10 +14,11 @@ import {
 export default function AppSection({ content, reverse, background }) {
     return (
         <CenterFlex background={background} width="100%">
-            <CenterFlex justify="center" align="center" maxWidth="800px" margin="1.6rem 1rem" padding="1rem" width="100%"  reverse={reverse}>
+            <CenterFlex justify="center" align="center" maxWidth="800px" margin="1.6rem 0" padding="1rem" width="100%"  reverse={reverse}>
                 <AppImg src={content.appImage} alt={content.appImage} />
                 <AppText>
                     {content.heading && <CustomText size={theme.font.medium}>{content.heading}</CustomText>}
+                    {content.subtitle && <CustomText size={theme.font.medium}>{content.subtitle}</CustomText>}
                     {content.list && content.list.heading && content.list.items && <>
                         <CustomText size={theme.font.medium} weight={600} margin="1rem 0 0" color={theme.color.lightBlue}>{content.list.heading}</CustomText>
                         <AppList>
@@ -27,7 +28,7 @@ export default function AppSection({ content, reverse, background }) {
                     {content.text && content.text[0] && content.text.map((text, i) => <CustomText key={i} size={theme.font.default}>{text}</CustomText>)}
                     {content.download && <>
                         {content.download.text && <CustomText size={theme.font.default} weight={600} color={theme.color.orange} margin="1rem 0 0">{content.download.text}</CustomText>}
-                        <CenterFlex margin="1rem" justify="space-around">
+                        <CenterFlex justify="space-around">
                             {content.download.googleLink && <a href={content.download.googleLink}><img style={{ margin: "1rem", width: "200px" }} src={require("../images/google-play.png")} /></a>}
                             {content.download.iosLink && <a href={content.download.iosLink}><img style={{ margin: "1rem", width: "200px"}} src={require("../images/app-store.png")} /></a>}
                         </CenterFlex>

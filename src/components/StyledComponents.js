@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import theme from '../styles/theme'
 
 export const CenterFlex = styled.div`
+  box-sizing: border-box;
+  overflow: hidden;
   flex: ${({flex}) => flex ? 1 : 'none'};
   display: flex;
   justify-content: ${({justify}) => justify ? justify : 'center'};

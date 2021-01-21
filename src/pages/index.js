@@ -23,10 +23,9 @@ const content = {
     hero: {
         video: healthinoteMP4,
         heading: "Trusted health information, recommended by your clinician",
-        subtitle: "Healthinote is the go-to source for for clinically approved, visual health information.",
+        subtitle: "Healthinote is the go-to source for clinically approved, visual health information",
         description: [
-            "Find reliable health information from authoritative sources about any health condition - avoiding the risk of misleading or inaccurate information.",
-            "Receive health information recommened to you by your healthcare professional via digital health information prescriptions."
+            "Doctors, nurses or pharmacists can send recommended health information directly, via digital 'health information prescriptions'",
         ],
         badge: <>
             <img src={orchaApproved} style={{ width: "100%", height: "auto" }} alt="orcha-approved"/>
@@ -45,9 +44,9 @@ const content = {
                 content: <>
                     <MacSection content={{
                         appImage: require("../images/PCM-self-help.png"),
-                        heading: <>Healthinote pro helps doctors, nurses and pharmacists to make <strong>health information prescriptions</strong> and send them to patients via email, SMS or letter.</>,
+                        heading: <>Healthinote Pro helps doctors, nurses and pharmacists to make <strong>health information prescriptions</strong> and send them to patients via email, SMS or letter.</>,
                         text: [
-                            "Optimize your consultation time by sending recommended, trusted information that can be viewed outside of consultation time."
+                            "Optimise your consultation time by sending recommended, trusted information that can be viewed outside of consultation time."
                         ]
                     }} />
                     <AppSection reverse background="white" content={{
@@ -55,7 +54,7 @@ const content = {
                         list: {
                             heading: "Using Healthinote Pro, you can find and share health information that is:",
                             items: [
-                                <>from&nbsp;<strong>trusted sources including the NHS and many charities</strong></>,
+                                <>from&nbsp;<strong>trusted sources, including the NHS and many charities</strong></>,
                                 <><strong>reviewed</strong>&nbsp;by a medical advisory board</>,
                                 <><strong>locally relevant</strong></>,
                                 <>can be&nbsp;<strong>easily previewed</strong></>,
@@ -65,8 +64,8 @@ const content = {
                             ]
                         },
                         text: [
-                            "Copy the generated link or QR code to send it via your preferred method of communication,",
-                            "The person who receives your information perscription can view or save the information online or by using the Healthinote app on their smartphone."
+                            "Copy the generated link or QR code to send it via your preferred method of communication.",
+                            "The person who receives your information prescription can view or save the information online or by using the Healthinote app on their smartphone."
                         ]
                     }} />
                     <VideoSection content={{
@@ -74,7 +73,7 @@ const content = {
                         heading: "Integrated with eConsult",
                         text: [
                             "Healthcare professionals using eConsult can search and send health information directly to patients via their eConsult post consult messaging tool.",
-                            "Linked to Emis, all of your health prescriptions will automatically be saved to your clinical records."
+                            "Linked to EMIS, all of your health prescriptions will automatically be saved to your clinical records."
                         ]
                     }} />
                     <div style={{ maxWidth: "500px", margin: "0 2rem 2rem" }}>
@@ -114,9 +113,9 @@ const content = {
                     <VideoSection content={{
                         video: require('../images/Cognitant-innovation.mp4'),
                         heading: "Health information, delivered better.",
-                        subtitle: "Our parent company, Cognitant Group Ltd, specialises in creating clear and reliable health information.",
+                        subtitle: "Cognitant, the power behind Healthinote, specialises in creating clear and reliable health information.",
                         text: [
-                            "Cognitant uses visual and interactive techniques to communicate healthcare topics effectively, driving increases in patient understanding and adherance to medication and positive lifestlye behaviours.",
+                            "Cognitant Group uses visual and interactive techniques to communicate healthcare topics effectively, driving increases in patient understanding and adherence to medication and positive lifestyle behaviours.",
                         ]
                     }} />
                     <AppSection reverse background="white" content={{

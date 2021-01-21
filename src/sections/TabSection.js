@@ -34,6 +34,7 @@ const Tab = styled.div`
     justify-content: center;
     flex: 1;
     margin: 0 5px;
+    box-sizing: border-box;
     padding: 1rem;
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
@@ -46,6 +47,7 @@ const Tab = styled.div`
 
 const TabContent = styled.div`
     width: 100%;
+    box-sizing: border-box;
     display: ${({active}) => active ? "flex" : "none"};
     flex-direction: column;
     align-items: center;

@@ -29,6 +29,7 @@ export default function HeroSection({ content }) {
 
 const HeroVideo = styled.video`
     width: 100%;
+    box-sizing: border-box;
     max-width: 400px;
     margin: 20px 30px;
     object-fit: contain;
@@ -44,8 +45,8 @@ const HeroBadges = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 180px;
-    width: 100px;
+    height: 250px;
+    width: 150px;
     margin: 20px -0.5rem 30px 20px;
     padding: 1rem 1.25rem 1rem;
     background-color: white;

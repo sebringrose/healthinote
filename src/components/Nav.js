@@ -67,7 +67,7 @@ export default function Nav ({ setModal }) {
                     {links.map(({text,link, action}, key) => action ? <span key={key} style={navLinkStyle({ active: false, margin: true })} onClick={action}>{text}</span> : <Link to={link} style={navLinkStyle({ active: checkActive(link), margin: true })} onClick={() => setNavOpen(false)} key={key}>{text}</Link>)}
                 </LinkWrapper>
                 <LinkWrapper>
-                    Powered by&nbsp;<Link style={navLinkStyle({ active: true, margin: false })} to="https://www.cognitant.com">Cognitant</Link>
+                    Powered by&nbsp;<Link style={navLinkStyle({ active: true, margin: false })} to="https://www.cognitant.com">Cognitant Group</Link>
                 </LinkWrapper>
             </FlexWrapper>
         </NavWrapper>
@@ -79,6 +79,8 @@ export default function Nav ({ setModal }) {
 
 const NavWrapper = styled.nav`
     @media screen and (min-width: 900px) {
+        width: 100%;
+        box-sizing: border-box;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -133,10 +135,14 @@ const LinkWrapper = styled.div`
 `
 
 const ImgWrap = styled.div`
+    align-self: flex-start;
     width: 25px;
     position: fixed;
     margin: 15px;
     z-index: 2;
+    background: ${theme.color.blue};
+    border-radius: 50%;
+    padding: 1rem;
     ${theme.breakpoint('lg')`
         display: none;
     `}

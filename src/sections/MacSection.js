@@ -19,7 +19,7 @@ export default function MacSection({ content, reverse, background }) {
                 </AppFrame>
                 <AppText>
                     <CustomText size={theme.font.default}>{content.heading}</CustomText>
-                    {content.text && content.text[0] && content.text.map((text, i) => <CustomText key={i} size={theme.font.small}>{text}</CustomText>)}
+                    {content.text && content.text[0] && content.text.map((text, i) => <CustomText key={i} size={theme.font.default}>{text}</CustomText>)}
                 </AppText>
             </CenterFlex>
         </CenterFlex>

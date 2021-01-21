@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <FlexWrapper>
             <LinkWrapper>
-                Contact us for more information at&nbsp;<Link to="mailto:hello@cognitant.com">hello@cognitant.com</Link>
+                Contact us for more information at&nbsp;<a href="mailto:hello@healthinote.com">hello@healthinote.com</a>
             </LinkWrapper>
             <FlexWrapper row>
                 <a target="_blank" rel="noreferrer" href="https://www.twitter.com/cognitant">
@@ -27,6 +27,8 @@ export default function Footer() {
 }
 
 const FlexWrapper = styled.div`
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
