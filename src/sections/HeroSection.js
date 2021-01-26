@@ -43,7 +43,7 @@ const HeroText = styled.div`
 const HeroBadges = styled.div`
     align-self: flex-end;
     justify-content: space-between;
-    width: 150px;
+    width: 160px;
     margin: 20px 30px;
     padding: 1rem 1.25rem 1rem;
     background-color: white;

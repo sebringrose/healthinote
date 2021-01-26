@@ -16,7 +16,7 @@ import chevron from '../images/chevron.png'
 export default function PartnersSection({ content }) {
     const [scrollPosition, setScrollPosition] = useState(0)
     const partnersScroller = useRef()
-    const imgHeight = 70
+    const imgHeight = 80
 
     const scrollFcn = (e) => setScrollPosition(e.target.scrollLeft)
     const scrollClick = (direction) => {
@@ -59,7 +59,7 @@ export default function PartnersSection({ content }) {
         <FlexWrapper width="100%" margin="1rem auto" maxWidth="2000px" align="center">
             <OrangeButton disabled={scrollPosition < 50} onClick={() => scrollClick("left")}><img src={chevron} style={{ width: "30px", transform: "rotate(180deg)" }}/></OrangeButton>
             <Scroller ref={partnersScroller} flex margin="0 1rem" align="center">
-                {partners.allFile.edges.map((partner, i) => <Img id={`partners-${i}`} key={i} style={{ margin: "10px", height: `${imgHeight}px`, scrollSnapAlign: "start", minWidth: `${imgHeight * partner.node.childImageSharp.fluid.aspectRatio}px` }} objectFit="contain" fluid={partner.node.childImageSharp.fluid} durationFadeIn={100} />)}
+                {partners.allFile.edges.map((partner, i) => <Img id={`partners-${i}`} key={i} style={{ margin: "20px", height: `${imgHeight}px`, scrollSnapAlign: "start", minWidth: `${imgHeight * partner.node.childImageSharp.fluid.aspectRatio}px` }} objectFit="contain" fluid={partner.node.childImageSharp.fluid} durationFadeIn={100} />)}
             </Scroller>
             <OrangeButton disabled={partnersScroller.current && scrollPosition > partnersScroller.current.scrollLeftMax - 50} onClick={() => scrollClick("right")}><img src={chevron} style={{ width: "30px" }} /></OrangeButton>
         </FlexWrapper>
@@ -82,7 +82,9 @@ const OrangeButton = styled.button`
 const Scroller = styled(FlexWrapper)`
     overflow-x: scroll;
     scroll-behaviour: smooth;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-x: repeat(200px);
+    scroll-snap-destination: 0 0;
 
     /* Hide scrollbar for Chrome, Safari and Opera */
     ::-webkit-scrollbar {

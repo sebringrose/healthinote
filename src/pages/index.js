@@ -25,11 +25,11 @@ const content = {
         heading: "Trusted health information, recommended by your clinician",
         subtitle: "Healthinote is the go-to source for clinically approved, visual health information",
         description: [
-            "Doctors, nurses or pharmacists can send recommended health information directly, via digital 'health information prescriptions'",
+            <>Doctors, nurses or pharmacists can send recommended health information directly, via digital <strong>'health information prescriptions'</strong></>,
         ],
         badge: <>
             <img src={orchaApproved} style={{ width: "100%" }} alt="orcha-approved"/>
-            <CustomText weight="bold" color="#276189">APPROVED</CustomText>
+            <CustomText size="1.6rem" weight="bold" color="#276189">APPROVED</CustomText>
             <img src={sfcEndorsed} style={{ width: "100%" }} alt="skillsforcare-endorsed"/>
         </>
     },
@@ -76,9 +76,9 @@ const content = {
                             "Linked to EMIS, all of your health prescriptions will automatically be saved to your clinical records."
                         ]
                     }} />
-                    <div style={{ maxWidth: "500px", margin: "0 2rem 2rem" }}>
+                    {/* <div style={{ maxWidth: "500px", margin: "0 2rem 2rem" }}>
                         <CustomText align="center" weight={600} size={theme.font.medium} color={theme.color.orange}>Go to Healthinote Pro now to explore our library and create a health information prescription.</CustomText>
-                    </div>
+                    </div> */}
                 </>,
             },
             {

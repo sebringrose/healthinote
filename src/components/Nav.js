@@ -141,7 +141,7 @@ const ImgWrap = styled.div`
     position: fixed;
     margin: 15px;
     z-index: 2;
-    background: ${theme.color.blue};
+    background: white;
     border-radius: 50%;
     padding: 1rem;
     ${theme.breakpoint('lg')`
