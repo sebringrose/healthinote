@@ -56,7 +56,7 @@ export default function PartnersSection({ content }) {
         <CenterFlex justify="center" align="center" margin="3rem 0 0">
             <CustomText size={theme.font.large} color={theme.color.orange} weight={600}>{content.heading}</CustomText>
         </CenterFlex>
-        <FlexWrapper width="100%" margin={"1rem 0"} maxWidth="2000px" align="center">
+        <FlexWrapper width="100%" margin="1rem auto" maxWidth="2000px" align="center">
             <OrangeButton disabled={scrollPosition < 50} onClick={() => scrollClick("left")}><img src={chevron} style={{ width: "30px", transform: "rotate(180deg)" }}/></OrangeButton>
             <Scroller ref={partnersScroller} flex margin="0 1rem" align="center">
                 {partners.allFile.edges.map((partner, i) => <Img id={`partners-${i}`} key={i} style={{ margin: "10px", height: `${imgHeight}px`, scrollSnapAlign: "start", minWidth: `${imgHeight * partner.node.childImageSharp.fluid.aspectRatio}px` }} objectFit="contain" fluid={partner.node.childImageSharp.fluid} durationFadeIn={100} />)}

@@ -11,12 +11,12 @@ import {
 
 export default function HeroSection({ content }) {
     return (
-        <CenterFlex justify="center" align="center" margin="2rem 0" maxWidth="2000px">
+        <CenterFlex justify="center" align="center" margin="2rem auto" maxWidth="1500px">
             <HeroVideo preload="true" autoPlay muted loop playsInline>
                 <source src={content.video} type="video/mp4" />
             </HeroVideo>
             <HeroText>
-                <CustomText size={theme.font.xlarge} color={theme.color.lightBlue} weight={600}>{content.heading}</CustomText>
+                <CustomText size={theme.font.xlarge} color={theme.color.blue} weight={600}>{content.heading}</CustomText>
                 <CustomText size={theme.font.large}>{content.subtitle}</CustomText>
                 {content.description.map((line, i) => <CustomText key={i}>{line}</CustomText>)}
             </HeroText>
@@ -42,12 +42,9 @@ const HeroText = styled.div`
 
 const HeroBadges = styled.div`
     align-self: flex-end;
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    height: 250px;
     width: 150px;
-    margin: 20px -0.5rem 30px 20px;
+    margin: 20px 30px;
     padding: 1rem 1.25rem 1rem;
     background-color: white;
     text-align: center;

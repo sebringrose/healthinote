@@ -28,9 +28,9 @@ const content = {
             "Doctors, nurses or pharmacists can send recommended health information directly, via digital 'health information prescriptions'",
         ],
         badge: <>
-            <img src={orchaApproved} style={{ width: "100%", height: "auto" }} alt="orcha-approved"/>
-            <CustomText weight="bold" color={theme.color.blue}>APPROVED</CustomText>
-            <img src={sfcEndorsed} style={{ width: "100%", height: "auto" }} alt="skillsforcare-endorsed"/>
+            <img src={orchaApproved} style={{ width: "100%" }} alt="orcha-approved"/>
+            <CustomText weight="bold" color="#276189">APPROVED</CustomText>
+            <img src={sfcEndorsed} style={{ width: "100%" }} alt="skillsforcare-endorsed"/>
         </>
     },
     partners: {

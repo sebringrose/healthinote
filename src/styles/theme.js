@@ -2,12 +2,13 @@ import { createBreakpoint } from 'styled-components-breakpoint'
 
 export default {
     color: {
-        blue: "#226393",
-        orange: "#f46e42",
-        yellow: "#fcb737",
         backgroundBlue: "#f0f4f5",
-        lightBlue: "#0096d7",
-        opaque: "rgba(0, 0, 0, 0.4)"
+        backgroundGradient: "linear-gradient(to bottom right, #01b7ff 20%, #3c33fc 80%)",
+        blue: "#3c33fc",
+        darkBlue: "#050d60",
+        lightBlue: "#01b7ff",
+        opaque: "rgba(0, 0, 0, 0.4)",
+        orange: "#ff9201"
     },
     font: {
         small: "0.8rem",

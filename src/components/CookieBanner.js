@@ -8,10 +8,11 @@ const BannerContent = ({setCookieOverlay}) => {
         setCookieOverlay(true)
     }, [setCookieOverlay])
 
-    return <>
-        <p style={{ fontSize: "1.5rem" }}>Do you accept the use of cookies on this site?</p>
-        <p style={{ fontSize: "1rem" }}>We use cookies for anonymous analytics purposes only.&nbsp;<a href="https://cognitant.com/privacy">Learn more</a></p>
-    </>
+    return <div style={{ maxWidth: "600px" }}>
+        <p style={{ fontSize: "1rem" }}>Do you accept the use of cookies on this site?</p>
+        <p style={{ fontSize: "0.8rem" }}>We use cookies for anonymous analytics purposes only. Detailed information regarding the GDPR and ePrivacy Directive compliant storage and usage of personal data can be found in our <a href="https://cognitant.com/privacy">Privacy Policy</a>. Subject to change.</p>
+        <p style={{ fontSize: "0.6rem" }}>You may decline to accept the use of cookies and maintain unrestricted access to this website, however doing so may restrict your access to more advanced features and integrations into the Healthinote app platform.</p>
+    </div>
 }
 
 const CookieBanner = ({ setCookieOverlay }) => <CookieConsent

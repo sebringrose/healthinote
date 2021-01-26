@@ -26,10 +26,7 @@ const Wrapper = styled.div`
     box-sizing: border-box;
     width: 100%;
     font-family: mont;
-    display: flex;
-    flex-direction: column;
     background-color: white;
-    align-items: center;
     overflow: ${({overlay}) => overlay ? "hidden" : "scroll"}
 `;
 
@@ -42,12 +39,13 @@ const Modal = styled.div`
   box-sizing: border-box;
   background-color: ${theme.color.opaque};
   z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
 
 const ModalContent = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
   text-align: center;
   border-radius: 1rem;
   padding: 20px;

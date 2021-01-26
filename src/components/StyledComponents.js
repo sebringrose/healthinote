@@ -8,7 +8,7 @@ export const CenterFlex = styled.div`
   display: flex;
   justify-content: ${({justify}) => justify ? justify : 'center'};
   align-items: ${({align}) => align ? align : 'flex-start'};
-  margin: ${({margin}) => margin ? margin : 'unset'};
+  margin: ${({margin}) => margin ? margin : 'auto'};
   padding: ${({padding}) => padding ? padding : 'unset'};
   flex-direction: ${({column, reverse}) => column ? reverse ? 'column-reverse' : 'column' : reverse ? 'row-reverse' : 'row'};
   width: ${({width}) => width ? width : "unset"};

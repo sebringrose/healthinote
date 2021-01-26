@@ -13,7 +13,7 @@ export default function TabSection({ content }) {
     const [selectedTab, setSelectedTab] = useState(1)
     return (<>
         <CenterFlex column align="center" width="100%" maxWidth="2000px">
-            <CustomText margin="2rem" size={theme.font.large} color={theme.color.lightBlue} weight="600">{content.heading}</CustomText>
+            <CustomText margin="2rem" size={theme.font.large} color={theme.color.blue} weight="600">{content.heading}</CustomText>
             <Tabs>
                 {content.tabs.map((tab, i) => <Tab key={i} active={selectedTab === i} onClick={() => setSelectedTab(i)}>{tab.title}</Tab>)}
             </Tabs>
@@ -41,8 +41,8 @@ const Tab = styled.div`
     cursor: pointer;
     text-align: center;
     font-weight: ${({active}) => active ? 600 : 400};
-    color: ${({active}) => active ? theme.color.orange : 'white'};
-    background-color: ${({active}) => active ? theme.color.backgroundBlue : theme.color.blue};
+    color: ${({active}) => active ? theme.color.blue : 'white'};
+    background: ${({active}) => active ? theme.color.backgroundBlue : theme.color.backgroundGradient};
 `
 
 const TabContent = styled.div`

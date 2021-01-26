@@ -85,7 +85,7 @@ const NavWrapper = styled.nav`
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        padding: 15px;
+        padding: 30px;
         background-color: ${theme.color.blue};
     }
     @media screen and (max-width: 900px) {
@@ -100,6 +100,7 @@ const NavWrapper = styled.nav`
 `
 
 const FlexWrapper = styled.div`
+    max-width: 1000px;
     @media screen and (max-width: 900px) {
         display: flex;
         justify-content: center;
@@ -117,7 +118,7 @@ const FlexWrapper = styled.div`
 `
 
 const ImageWrapper = styled.div`
-    width: 200px;
+    width: 261px;
 `
 
 const LinkWrapper = styled.div`

@@ -20,7 +20,7 @@ export default function AppSection({ content, reverse, background }) {
                     {content.heading && <CustomText size={theme.font.medium}>{content.heading}</CustomText>}
                     {content.subtitle && <CustomText size={theme.font.medium}>{content.subtitle}</CustomText>}
                     {content.list && content.list.heading && content.list.items && <>
-                        <CustomText size={theme.font.medium} weight={600} margin="1rem 0 0" color={theme.color.lightBlue}>{content.list.heading}</CustomText>
+                        <CustomText size={theme.font.medium} weight={600} margin="1rem 0 0" color={theme.color.blue}>{content.list.heading}</CustomText>
                         <AppList>
                             {content.list.items.map((li, i) => <AppListItem key={i}>{li}</AppListItem>)}
                         </AppList>

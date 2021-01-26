@@ -16,7 +16,7 @@ export default function VideoSection({ content, reverse, background }) {
                 <source src={content.video} type="video/mp4" />
             </Video>
             <VideoText>
-                {content.heading && <CustomText size={theme.font.large} color={theme.color.lightBlue} weight={600}>{content.heading}</CustomText>}
+                {content.heading && <CustomText size={theme.font.large} color={theme.color.blue} weight={600}>{content.heading}</CustomText>}
                 {content.subtitle && <CustomText size={theme.font.medium}>{content.subtitle}</CustomText>}
                 {content.text.map((line, i) => <CustomText key={i} size={theme.font.default}>{line}</CustomText>)}
             </VideoText>
