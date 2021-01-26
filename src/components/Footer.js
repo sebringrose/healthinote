@@ -47,6 +47,9 @@ const LinkWrapper = styled.div`
         text-decoration: none;
         color: ${theme.color.orange};
     }
+    @media screen and (max-width: 400px) {
+        font-size: ${theme.font.medium};
+    }
 `
 
 const CustomText = styled.p`

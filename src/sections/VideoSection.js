@@ -11,7 +11,7 @@ import {
 export default function VideoSection({ content, reverse, background }) {
     return (
     <CenterFlex background={background} width="100%">
-        <CenterFlex justify="center" align="center" padding="2rem" width="100%" maxWidth="800px" reverse={reverse}>
+        <CenterFlex justify="center" align="center" margin="1.6rem 0" padding="1rem" width="100%" maxWidth="800px" reverse={reverse}>
             <Video preload="true" autoPlay muted loop playsInline>
                 <source src={content.video} type="video/mp4" />
             </Video>

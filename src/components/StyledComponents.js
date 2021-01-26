@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import theme from '../styles/theme'
 
 export const CenterFlex = styled.div`
+  position: relative;
   box-sizing: border-box;
   overflow: hidden;
   flex: ${({flex}) => flex ? 1 : 'none'};

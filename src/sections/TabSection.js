@@ -29,7 +29,7 @@ const Tab = styled.div`
     align-items: center;
     justify-content: center;
     flex: 1;
-    max-width: 30%;
+    max-width: 30vw;
     margin: 0 5px;
     box-sizing: border-box;
     padding: 1rem;
@@ -38,13 +38,14 @@ const Tab = styled.div`
     font-weight: ${({active}) => active ? 600 : 400};
     color: ${({active}) => active ? theme.color.blue : 'white'};
     background: ${({active}) => active ? theme.color.backgroundBlue : theme.color.backgroundGradient};
+    @media screen and (max-width: 400px) {
+        font-size: ${theme.font.xsmall};
+        margin: 0 3px;
+    }
 `
 
 const TabContent = styled.div`
     width: 100%;
-    box-sizing: border-box;
-    display: ${({active}) => active ? "flex" : "none"};
-    flex-direction: column;
-    align-items: center;
+    display: ${({active}) => active ? "block" : "none"};
     background-color: ${theme.color.backgroundBlue};
 `

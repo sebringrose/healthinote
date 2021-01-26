@@ -12,6 +12,7 @@ export default {
         orange: "#ff9201"
     },
     font: {
+        xsmall: "0.7rem",
         small: "0.8rem",
         default: "1rem",
         medium: "1.1rem",

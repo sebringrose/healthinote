@@ -11,7 +11,7 @@ import {
 export default function MacSection({ content, reverse, background }) {
     return (
         <CenterFlex background={background} width="100%">
-            <CenterFlex justify="center" align="center" maxWidth="800px" margin="1.6rem 1rem" padding="1rem" width="100%"  reverse={reverse}>
+            <CenterFlex justify="center" align="center" maxWidth="800px" margin="1.6rem 0" padding="1rem" width="100%"  reverse={reverse}>
                 <AppFrame>
                     <AppView>
                         <AppImage src={content.appImage} alt={content.appImage} />
