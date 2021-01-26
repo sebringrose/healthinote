@@ -1,0 +1,17 @@
+@import url("https://use.typekit.net/lir8nle.css");
+
+* {
+    font-family: "montserrat", sans-serif;
+    font-style: normal;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+#___gatsby, #gatsby-focus-wrapper {
+    margin: auto;
+    height: 100%;
+    max-width: 1500px;
+}
