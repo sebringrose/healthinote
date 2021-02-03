@@ -13,7 +13,7 @@ export default function FAQuestion({ question, answer }) {
                 <div style={{ flex: 1 }}>
                     <CustomText size={theme.font.medium} color={theme.color.orange} weight={600}>{question}</CustomText>
                 </div>
-                <img src={require('../images/chevron_orange.png')} style={{ height: "36px", transform: `rotate(${expanded ? "180" : 0}deg)` }} alt="chevron" />
+                <img src={require('../images/chevron_orange.png')} style={{ height: "36px", marginLeft: "1rem", transform: `rotate(${expanded ? "180" : 0}deg)` }} alt="chevron" />
             </Question>
             <Answer expanded={expanded}>{answer}</Answer>
         </QuestionBlock>

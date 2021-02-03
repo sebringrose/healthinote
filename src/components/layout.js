@@ -38,7 +38,7 @@ const Modal = styled.div`
   width: 100%;
   box-sizing: border-box;
   background-color: ${theme.color.opaque};
-  z-index: 2;
+  z-index: 3;
 `
 
 const ModalContent = styled.div`

@@ -6,12 +6,20 @@ import theme from '../styles/theme'
 import { useStaticQuery, graphql } from "gatsby"
 
 import healthinote from '../images/healthinote.png'
+import healthinoteTagline from '../images/healthinote-tagline.png'
 
 export default function Nav ({ setModal }) {
     const [navOpen, setNavOpen] = useState(false)
 
     const images = useStaticQuery(graphql`
         query {
+            healthinoteTagline: file(relativePath: { eq: "healthinote-tagline.png" }) {
+                childImageSharp {
+                    fluid(maxWidth: 400) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
             openMenu: file(relativePath: { eq: "open-menu.png" }) {
                 childImageSharp {
                     fluid(maxWidth: 400) {
@@ -26,7 +34,8 @@ export default function Nav ({ setModal }) {
                     }
                 }
             }
-    }`)
+        }
+    `)
 
     const checkActive = (link) => {
         if (typeof window === "undefined") return null
@@ -60,20 +69,25 @@ export default function Nav ({ setModal }) {
     return (<>
         <NavWrapper navOpen={navOpen}>
             <FlexWrapper>
-                <ImageWrapper>
-                    <img style={{ width: "100%" }} src={healthinote} alt="Healthinote" />
-                </ImageWrapper>
                 <LinkWrapper>
                     {links.map(({text,link, action}, key) => action ? <span key={key} style={navLinkStyle({ active: false, margin: true })} onClick={action}>{text}</span> : <Link to={link} style={navLinkStyle({ active: checkActive(link), margin: true })} onClick={() => setNavOpen(false)} key={key}>{text}</Link>)}
                 </LinkWrapper>
-                <LinkWrapper>
+                {!navOpen && <ImageWrapper>
+                    <img style={{ width: "100%" }} src={healthinote} alt="Healthinote" />
+                </ImageWrapper>}
+                {!navOpen && <LinkWrapper>
                     Powered by&nbsp;<Link style={navLinkStyle({ active: true, margin: false })} to="https://www.cognitant.com">Cognitant Group</Link>
-                </LinkWrapper>
+                </LinkWrapper>}
             </FlexWrapper>
         </NavWrapper>
-        <ImgWrap onClick={() => setNavOpen(!navOpen)}>
-            <Img fluid={navOpen ? images.cancel.childImageSharp.fluid : images.openMenu.childImageSharp.fluid}/>
-        </ImgWrap>
+        <MobileNav>
+            <MobileNavButton onClick={() => setNavOpen(!navOpen)}>
+                <Img fluid={navOpen ? images.cancel.childImageSharp.fluid : images.openMenu.childImageSharp.fluid}/>
+            </MobileNavButton>
+            <MobileNavLogo onClick={() => setNavOpen(!navOpen)}>
+                <Img style={{ width: "180px" }} fluid={images.healthinoteTagline.childImageSharp.fluid} navOpen={navOpen} />
+            </MobileNavLogo>
+        </MobileNav>
     </>)
 }
 
@@ -85,7 +99,7 @@ const NavWrapper = styled.nav`
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        padding: 30px;
+        padding: 15px 30px 0;
         background-color: ${theme.color.blue};
     }
     @media screen and (max-width: 900px) {
@@ -119,6 +133,7 @@ const FlexWrapper = styled.div`
 
 const ImageWrapper = styled.div`
     width: 261px;
+    margin-top: -15px;
 `
 
 const LinkWrapper = styled.div`
@@ -135,16 +150,34 @@ const LinkWrapper = styled.div`
     font-size: ${theme.font.medium};
 `
 
-const ImgWrap = styled.div`
-    align-self: flex-start;
-    width: 25px;
+const MobileNav = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
     position: fixed;
-    margin: 15px;
+    top: 0;
+    left: 0;
     z-index: 2;
-    background: ${theme.color.blue};
-    border-radius: 50%;
-    padding: 1rem;
     ${theme.breakpoint('lg')`
         display: none;
     `}
+`
+
+const MobileNavButton = styled.div`
+    padding: 1rem;
+    background: ${theme.color.blue};
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    margin: 1rem;
+    cursor: pointer;
+`
+
+const MobileNavLogo = styled.div`
+    padding: 0.2rem 0.8rem 0.2rem 0.5rem;
+    background: ${theme.color.blue};
+    border-radius: 0.5rem;
+    margin: 1rem;
+    cursor: pointer;
 `
