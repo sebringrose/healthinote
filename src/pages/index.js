@@ -1,6 +1,4 @@
 import React from 'react'
-import graphql from 'gatsby'
-import Img from 'gatsby-image'
 
 import SEO from '../components/seo'
 import Layout from '../components/layout'
@@ -13,24 +11,20 @@ import MacSection from '../sections/MacSection'
 import VideoSection from '../sections/VideoSection'
 
 import { CustomText } from '../components/StyledComponents'
-import theme from '../styles/theme'
-
-import healthinoteMP4 from '../images/healthinote.mp4'
-import orchaApproved from '../images/orcha-approved.png'
-import sfcEndorsed from '../images/skillsforcare-endorsed.jpg'
 
 const content = {
     hero: {
-        video: healthinoteMP4,
+        video: require('../images/healthinote_1.mp4'),
+        linkedVideo: require('../images/healthinote.mp4'),
         heading: "Trusted health information, recommended by your clinician",
         subtitle: "Healthinote is the go-to source for clinically approved, visual health information",
         description: [
             <>Doctors, nurses or pharmacists can send recommended health information directly, via digital <strong>'health information prescriptions'</strong></>,
         ],
         badge: <>
-            <img src={orchaApproved} style={{ width: "100%" }} alt="orcha-approved"/>
+            <img src={require('../images/orcha-approved.png')} style={{ width: "100%" }} alt="orcha-approved"/>
             <CustomText size="1.6rem" weight="bold" color="#276189">APPROVED</CustomText>
-            <img src={sfcEndorsed} style={{ width: "100%" }} alt="skillsforcare-endorsed"/>
+            <img src={require('../images/skillsforcare-endorsed.jpg')} style={{ width: "100%" }} alt="skillsforcare-endorsed"/>
         </>
     },
     partners: {
@@ -46,7 +40,7 @@ const content = {
                         appImage: require("../images/PCM-self-help.png"),
                         heading: <>Healthinote Pro helps doctors, nurses and pharmacists to make <strong>health information prescriptions</strong> and send them to patients via email, SMS or letter.</>,
                         text: [
-                            "Optimise your consultation time by sending recommended, trusted information that can be viewed outside of consultation time."
+                            "Optimise your consultation time by sending recommended, trusted information that can be viewed outside of the appointment."
                         ]
                     }} />
                     <AppSection reverse background="white" content={{
@@ -69,7 +63,7 @@ const content = {
                         ]
                     }} />
                     <VideoSection content={{
-                        video: require('../images/Healthinote_eConsult.mp4'),
+                        video: require('../images/Healthinote_eConsult_1.mp4'),
                         heading: "Integrated with eConsult",
                         text: [
                             "Healthcare professionals using eConsult can search and send health information directly to patients via their eConsult post consult messaging tool.",
@@ -111,11 +105,11 @@ const content = {
                 title: "I'M FROM THE HEALTHCARE INDUSTRY",
                 content: <>
                     <VideoSection content={{
-                        video: require('../images/Cognitant-innovation.mp4'),
+                        video: require('../images/Cognitant-innovation_1.mp4'),
                         heading: "Health information, delivered better.",
                         subtitle: "Cognitant, the power behind Healthinote, specialises in creating clear and reliable health information.",
                         text: [
-                            "Cognitant Group uses visual and interactive techniques to communicate healthcare topics effectively, driving increases in patient understanding and adherence to medication and positive lifestyle behaviours.",
+                            "Cognitant Group uses visual and interactive techniques to enhance patient understanding, adherence to medication and positive lifestyle behaviours.",
                         ]
                     }} />
                     <AppSection reverse background="white" content={{

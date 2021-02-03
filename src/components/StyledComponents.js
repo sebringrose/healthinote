@@ -60,14 +60,7 @@ export const CustomText = styled.p`
   padding: 5px 0px;
   font-weight: ${({weight}) => weight ? weight : '300'};
   max-width: ${({maxWidth}) => maxWidth ? maxWidth : 'unset'};
-  background-color: ${({color}) => color ? color : 'black'};
-  background-image: ${({background}) => background ? background : 'unset'};
-  background-size: 100%;
-  background-repeat: no-repeat;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
+  color: ${({color}) => color ? color : 'black'};
 `;
 
 export const CardText = styled(CustomText)`

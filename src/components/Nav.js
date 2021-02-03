@@ -47,10 +47,10 @@ export default function Nav ({ setModal }) {
             text: 'Home',
             link: '/'
         },
-        // {
-        //     text: 'About',
-        //     link: '/about'
-        // },
+        {
+            text: 'About',
+            link: '/about'
+        },
         {
             text: 'Contact',
             action: () => setModal(<>If you have any questions or suggestions for improvement of our service, feel free to contact us at <Link to="mailto:hello@healthinote.com" style={navLinkStyle({ active: true, margin: false })}>hello@healthinote.com</Link>.</>)
@@ -141,7 +141,7 @@ const ImgWrap = styled.div`
     position: fixed;
     margin: 15px;
     z-index: 2;
-    background: white;
+    background: ${theme.color.blue};
     border-radius: 50%;
     padding: 1rem;
     ${theme.breakpoint('lg')`

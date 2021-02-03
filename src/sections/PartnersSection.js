@@ -32,7 +32,6 @@ export default function PartnersSection({ content }) {
             partnersScroller.current.scrollX = scrollPosition
             partnersScroller.current.addEventListener('scroll', scrollFcn)
         }
-        return () => partnersScroller.current.removeEventListener('scroll', scrollFcn)
     }, [partnersScroller])
 
     const partners = useStaticQuery(graphql`

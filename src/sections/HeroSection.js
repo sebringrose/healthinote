@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
 
 import theme from '../styles/theme'
 
@@ -12,11 +11,13 @@ import {
 export default function HeroSection({ content }) {
     return (
         <CenterFlex justify="center" align="center" margin="2rem auto" maxWidth="1500px">
-            <HeroVideo preload="true" autoPlay muted loop playsInline>
-                <source src={content.video} type="video/mp4" />
-            </HeroVideo>
+            <a href={content.linkedVideo} target="_blank">
+                <HeroVideo preload="true" autoPlay muted loop playsInline>
+                    <source src={content.video} type="video/mp4" />
+                </HeroVideo>
+            </a>
             <HeroText>
-                <CustomText size={theme.font.xlarge} color={theme.color.lightBlue} weight={600}>{content.heading}</CustomText>
+                <CustomText size={theme.font.xlarge} color={theme.color.blue} weight={600}>{content.heading}</CustomText>
                 <CustomText size={theme.font.large}>{content.subtitle}</CustomText>
                 {content.description.map((line, i) => <CustomText key={i}>{line}</CustomText>)}
             </HeroText>
