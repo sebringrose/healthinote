@@ -10,7 +10,7 @@ import {
 
 export default function HeroSection({ content }) {
     return (
-        <CenterFlex justify="center" align="center" margin="5rem auto" maxWidth="1500px">
+        <CenterFlex justify="center" align="center" margin="2rem auto" maxWidth="1500px">
             <a href={content.linkedVideo} target="_blank">
                 <HeroVideo preload="true" autoPlay muted loop playsInline>
                     <source src={content.video} type="video/mp4" />
@@ -29,7 +29,7 @@ export default function HeroSection({ content }) {
 }
 
 const HeroVideo = styled.video`
-    width: 100%;
+    width: 86vw;
     box-sizing: border-box;
     max-width: 400px;
     margin: 20px 30px;

@@ -85,7 +85,7 @@ export default function Nav ({ setModal }) {
                 <Img fluid={navOpen ? images.cancel.childImageSharp.fluid : images.openMenu.childImageSharp.fluid}/>
             </MobileNavButton>
             <MobileNavLogo onClick={() => setNavOpen(!navOpen)}>
-                <Img style={{ width: "180px" }} fluid={images.healthinoteTagline.childImageSharp.fluid} navOpen={navOpen} />
+                <Img style={{ width: "180px", objectFit: "containt" }} fluid={images.healthinoteTagline.childImageSharp.fluid} navOpen={navOpen} />
             </MobileNavLogo>
         </MobileNav>
     </>)
@@ -155,16 +155,14 @@ const MobileNav = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
+    background: ${theme.color.blue};
     ${theme.breakpoint('lg')`
         display: none;
     `}
 `
 
 const MobileNavButton = styled.div`
+    z-index: 2;
     padding: 1rem;
     background: ${theme.color.blue};
     border-radius: 50%;
@@ -175,6 +173,7 @@ const MobileNavButton = styled.div`
 `
 
 const MobileNavLogo = styled.div`
+    z-index: 2;
     padding: 0.2rem 0.8rem 0.2rem 0.5rem;
     background: ${theme.color.blue};
     border-radius: 0.5rem;

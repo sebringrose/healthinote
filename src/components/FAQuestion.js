@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import theme from '../styles/theme'
 
-import { CustomText, CenterFlex } from '../components/StyledComponents'
+import { CustomText } from '../components/StyledComponents'
 
-export default function FAQuestion({ question, answer }) {
+export default function FAQuestion({ question, answer, last }) {
   const [expanded, setExpanded] = useState(false)
 
     return (
-        <QuestionBlock>
+        <QuestionBlock last={last}>
             <Question style={{ cursor: "pointer" }} onClick={() => setExpanded(!expanded)}>
                 <div style={{ flex: 1 }}>
                     <CustomText size={theme.font.medium} color={theme.color.orange} weight={600}>{question}</CustomText>
@@ -23,7 +23,7 @@ export default function FAQuestion({ question, answer }) {
 const QuestionBlock = styled.div`
     width: 100%;
     padding: 0.8rem 0.2rem;
-    border-bottom: 1px solid grey;
+    border-bottom: ${({last}) => !last ? "1px solid grey" : null};
 `
 
 const Question = styled.div`

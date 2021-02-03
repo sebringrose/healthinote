@@ -2,6 +2,7 @@
 
 * {
     font-family: "montserrat", sans-serif;
+    font-weight: 300;
     font-style: normal;
     scroll-behavior: smooth;
 }
@@ -20,6 +21,10 @@ a {
     color: #ff9201;
     font-weight: 600;
     text-decoration: none;
+}
+
+img {
+    object-fit: contain !important;
 }
 
 .cookie-buttons {

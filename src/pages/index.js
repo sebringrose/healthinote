@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import SEO from '../components/seo'
 import Layout from '../components/layout'
@@ -137,8 +137,9 @@ const content = {
 }
 
 export default function Index() {
+    const [modal, setModal] = useState(false)
     return (
-        <Layout>
+        <Layout modal={modal} setModal={setModal}>
             <SEO title="Healthinote" />
             <HeroSection content={content.hero} />
             <PartnersSection content={content.partners} />

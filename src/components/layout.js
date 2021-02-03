@@ -6,8 +6,7 @@ import theme from '../styles/theme'
 
 import CookieBanner from "./CookieBanner"
 
-export default function Layout({children}) {
-  const [modal, setModal] = useState(false)
+export default function Layout({modal, setModal, children}) {
   const [cookieOverlay, setCookieOverlay] = useState(false)
 
   return (<Wrapper overlay={cookieOverlay}>
@@ -44,13 +43,15 @@ const Modal = styled.div`
 const ModalContent = styled.div`
   position: absolute;
   left: 50%;
-  top: 40%;
+  top: 45%;
   transform: translate(-50%, -50%);
   text-align: center;
   border-radius: 1rem;
   padding: 20px;
   font-size: 1rem;
   background-color: white;
+  min-width: 260px;
   max-width: 400px;
-  margin: 10px;
+  max-height: 75vh;
+  overflow: scroll;
 `
