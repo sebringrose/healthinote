@@ -18,7 +18,7 @@ const content = {
             {
                 q: "How does Healthinote ensure that all content and their sources are credible and can be trusted?",
                 a: <>
-                    <p>We are careful to only use sources of health information that are known to be clinically- led, trusted and reliable. With the support of our advisory board, our cClinical dDirector makes decisions about which resources should be included for the library.  Our content sources currently include:</p>
+                    <p>We are careful to only use sources of health information that are known to be clinically- led, trusted and reliable. With the support of our advisory board, our clinical director makes decisions about which resources should be included for the library.  Our content sources currently include:</p>
                     <ul>
                         <li>the NHS Health A to Z and medication library</li>
                         <li>charity partners, including Macmillan, Cancer Research UK, Asthma UK, British Pregnancy Advisory Service, Royal National Institute of Blind PeopleBPAS, RNIB, Mind, and many more</li>
@@ -164,7 +164,7 @@ const content = {
                 image: require("../images/team/juhi.png"),
                 name: 'Dr Juhi Tandon',
                 color: theme.color.orange,
-                position: 'Clinical Director and Founder',
+                position: 'Clinical Director, Clinical Safety Officer and Founder',
                 links: {
                     twitter: null,
                     linkedin: 'https://www.linkedin.com/in/juhi-tandon-b439aaa1/'
