@@ -64,7 +64,7 @@ const content = {
                     }} />
                     <VideoSection content={{
                         video: require('../images/healthinote_eConsult_optimised.mp4'),
-                        linkedVideo: require('../images/healthinote_eConsult.mp4'),
+                        linkedVideo: require('../images/Healthinote_eConsult.mp4'),
                         heading: "Integrated with eConsult",
                         text: [
                             "Healthcare professionals using eConsult can search and send health information directly to patients via their eConsult post consult messaging tool.",
@@ -106,8 +106,8 @@ const content = {
                 title: "I'M FROM THE HEALTHCARE INDUSTRY",
                 content: <>
                     <VideoSection content={{
-                        video: require('../images/cognitant_innovation_optimised.mp4'),
-                        linkedVideo: require('../images/cognitant_innovation.mp4'),
+                        video: require('../images/Cognitant_innovation_optimised.mp4'),
+                        linkedVideo: require('../images/Cognitant_innovation.mp4'),
                         heading: "Health information, delivered better.",
                         subtitle: "Cognitant, the power behind Healthinote, specialises in creating clear and reliable health information.",
                         text: [
