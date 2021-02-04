@@ -11,11 +11,12 @@ import {
 export default function HeroSection({ content }) {
     return (
         <CenterFlex justify="center" align="center" margin="2rem auto" maxWidth="1500px">
-            <a href={content.linkedVideo} target="_blank">
+            {/* Wrapping video in anchor seems to slow down video loading */}
+            {/* <a href={content.linkedVideo} target="_blank"> */}
                 <HeroVideo preload="true" autoPlay muted loop playsInline>
                     <source src={content.video} type="video/mp4" />
                 </HeroVideo>
-            </a>
+            {/* </a> */}
             <HeroText>
                 <CustomText size={theme.font.xlarge} color={theme.color.blue} weight={600}>{content.heading}</CustomText>
                 <CustomText size={theme.font.large}>{content.subtitle}</CustomText>

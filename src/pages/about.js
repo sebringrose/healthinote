@@ -16,7 +16,7 @@ const content = {
         heading: "Frequently asked questions",
         questions: [
             {
-                q: "Can I view the content (and its source) to ensure that the health prescriptions are safe, relevant and applicable to my patients?",
+                q: "How does Healthinote ensure that all content and their sources are credible and can be trusted?",
                 a: <>
                     <p>We are careful to only use sources of health information that are known to be clinically- led, trusted and reliable. With the support of our advisory board, our cClinical dDirector makes decisions about which resources should be included for the library.  Our content sources currently include:</p>
                     <ul>
@@ -29,7 +29,7 @@ const content = {
                 </>
             },
             {
-                q: "Can you explain how accessing ‘health prescriptions’ from eConsult works?",
+                q: "How can I, as a doctor, send health information prescriptions using Healthinote Pro vía eConsult?",
                 a: <>
                     <p><strong>If you are a clinician&nbsp;</strong>with access to eConsult, sending an information prescription is easy.</p>
                     <p>When you are in the post consult messaging service (PCM) you have access to the Healthinote search bar. Use the search bar to search for any health information. For example, if you search ‘contraception’, it will bring up all contraception health information from a variety of trusted sources. You can click to ‘preview’ the content and then press ‘insert’ to insert the link into the body of your message. Any links you insert will be sent to the patient who can then access the information via the Healthinote app for free.</p>
