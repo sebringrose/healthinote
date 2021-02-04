@@ -14,7 +14,7 @@ import { CustomText } from '../components/StyledComponents'
 
 const content = {
     hero: {
-        video: require('../images/healthinote_1.mp4'),
+        video: require('../images/healthinote_optimised.mp4'),
         linkedVideo: require('../images/healthinote.mp4'),
         heading: "Trusted health information, recommended by your clinician",
         subtitle: "Healthinote is the go-to source for clinically approved, visual health information",
@@ -63,7 +63,7 @@ const content = {
                         ]
                     }} />
                     <VideoSection content={{
-                        video: require('../images/Healthinote_eConsult_1.mp4'),
+                        video: require('../images/Healthinote_eConsult_optimised.mp4'),
                         heading: "Integrated with eConsult",
                         text: [
                             "Healthcare professionals using eConsult can search and send health information directly to patients via their eConsult post consult messaging tool.",
@@ -105,7 +105,7 @@ const content = {
                 title: "I'M FROM THE HEALTHCARE INDUSTRY",
                 content: <>
                     <VideoSection content={{
-                        video: require('../images/Cognitant-innovation_1.mp4'),
+                        video: require('../images/Cognitant-innovation_optimised.mp4'),
                         heading: "Health information, delivered better.",
                         subtitle: "Cognitant, the power behind Healthinote, specialises in creating clear and reliable health information.",
                         text: [
