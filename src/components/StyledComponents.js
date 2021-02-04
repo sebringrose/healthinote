@@ -2,20 +2,16 @@ import styled from 'styled-components'
 import theme from '../styles/theme'
 
 export const CenterFlex = styled.div`
-  position: relative;
-  box-sizing: border-box;
-  overflow: hidden;
   flex: ${({flex}) => flex ? 1 : 'none'};
   display: flex;
-  justify-content: ${({justify}) => justify ? justify : 'center'};
-  align-items: ${({align}) => align ? align : 'flex-start'};
-  margin: ${({margin}) => margin ? margin : 'auto'};
-  padding: ${({padding}) => padding ? padding : 'unset'};
-  flex-direction: ${({column, reverse}) => column ? reverse ? 'column-reverse' : 'column' : reverse ? 'row-reverse' : 'row'};
-  width: ${({width}) => width ? width : "unset"};
-  max-width: ${({maxWidth}) => maxWidth ? maxWidth : "unset"};
-  background-color: ${({background}) => background ? background : "unset"};
-  flex-wrap: ${({wrap}) => wrap ? 'wrap' : "unset"};
+  justify-content: ${({VAlign}) => VAlign ? VAlign : 'center'};
+  background-color: ${({color}) => color ? color : 'white'};
+  flex-direction: ${({column}) => column ? 'column' : 'row'};
+  
+  ${theme.breakpoint("xl")`
+    flex: ${({flex}) => flex};
+    justify-content: ${({align}) => align ? align : 'none'};
+  `}
   @media screen and (max-width: 600px) {
     flex-wrap: wrap;
   } 
@@ -36,31 +32,23 @@ export const ParaFlex = styled(CenterFlex)`
 `;
 
 export const FlexWrapper = styled.div`
-  flex: ${({flex}) => flex ? flex : '1'};
   display: flex;
-  flex-wrap: ${({wrap}) => wrap};
+  flex-wrap: wrap;
   flex-direction: ${({column}) => column ? 'column' : 'row'};
-  justify-content: ${({justify}) => justify ? justify : 'unset'};
-  align-items: ${({align}) => align ? align : 'unset'};
-  width: ${({width}) => width ? width : "unset"};
-  height: ${({height}) => height ? height : "unset"};
-  max-width: ${({maxWidth}) => maxWidth ? maxWidth : "unset"};
-  max-height: ${({maxHeight}) => maxHeight ? maxHeight : "unset"};
-  margin: ${({margin}) => margin ? margin : 'unset'};
-  padding: ${({padding}) => padding ? padding : 'unset'};
+  justify-content: ${({VAlign}) => VAlign ? VAlign : 'unset'};
+  align-items: ${({HAlign}) => HAlign ? HAlign : 'unset'};
 `;
 
 export const CustomText = styled.p`
   /* @media screen and (max-width: 900px) {
     padding: 10px 70px;
   }; */
-  text-align: ${({align}) => align ? align : "unset"};
-  font-size: ${({size}) => size ? size : theme.font.medium};
+  font-size: ${({fsize}) => fsize ? fsize : '14px'};
+  color: ${({color}) => color ? color : 'black'};
   margin: ${({margin}) => margin ? margin : '0px'};
   padding: 5px 0px;
-  font-weight: ${({weight}) => weight ? weight : '300'};
+  font-weight: ${({fweight}) => fweight ? fweight : '300'};
   max-width: ${({maxWidth}) => maxWidth ? maxWidth : 'unset'};
-  color: ${({color}) => color ? color : 'black'};
 `;
 
 export const CardText = styled(CustomText)`
@@ -101,7 +89,7 @@ export const CardWrap = styled.div`
     border-radius: 20px;
 `;
 
-export const per = styled.div`
+export const ImgWrapper = styled.div`
     display: flex;
     flex: 1;
     background-color: black;

@@ -1,234 +1,615 @@
-import React, {useState} from 'react'
-
+import React, { useState } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import SEO from '../components/seo';
+import Layout from '../components/layout'
+import Img from 'gatsby-image'
 import theme from '../styles/theme'
 
-import SEO from '../components/seo'
-import Layout from '../components/layout'
-import { CustomText } from '../components/StyledComponents'
-
-import FAQSection from '../sections/FAQSection'
-import TestimonialSection from '../sections/TestimonialSection'
-import TestingSection from '../sections/TestingSection'
-import TeamSection from '../sections/TeamSection'
-
-const content = {
-    FAQs: {
-        heading: "Frequently asked questions",
-        questions: [
-            {
-                q: "How does Healthinote ensure that all content and their sources are credible and can be trusted?",
-                a: <>
-                    <p>We are careful to only use sources of health information that are known to be clinically- led, trusted and reliable. With the support of our advisory board, our cClinical dDirector makes decisions about which resources should be included for the library.  Our content sources currently include:</p>
-                    <ul>
-                        <li>the NHS Health A to Z and medication library</li>
-                        <li>charity partners, including Macmillan, Cancer Research UK, Asthma UK, British Pregnancy Advisory Service, Royal National Institute of Blind PeopleBPAS, RNIB, Mind, and many more</li>
-                        <li>HCI’s library of Health and Care videos, which has been commissioned by NHSX</li>
-                        <li>Cognitant Group Ltd (the parent company of Healthinote), which specialises in visual and interactive content, with all content created by medical writers followed by a stringent clinical review process.</li>
-                    </ul>
-                    <p>Our trusted charity content partners have been included in response to a survey that we have circulated amongst GPs to ask for their preferred content sources. The source of all content that appears in Healthinote is clearly shown.</p>
-                </>
-            },
-            {
-                q: "How can I, as a doctor, send health information prescriptions using Healthinote Pro vía eConsult?",
-                a: <>
-                    <p><strong>If you are a clinician&nbsp;</strong>with access to eConsult, sending an information prescription is easy.</p>
-                    <p>When you are in the post consult messaging service (PCM) you have access to the Healthinote search bar. Use the search bar to search for any health information. For example, if you search ‘contraception’, it will bring up all contraception health information from a variety of trusted sources. You can click to ‘preview’ the content and then press ‘insert’ to insert the link into the body of your message. Any links you insert will be sent to the patient who can then access the information via the Healthinote app for free.</p>
-                    <p><a href="https://youtu.be/Cl9aUR9kkc0" target="_blank">This video may help summarise the above.</a></p>
-                    <p><strong>If you are a patient</strong>, you will receive an email from your clinician, which will include links to the content selected by them. On receiving these links, you can simply click on them to access the information. If you are using a smartphone, you will be prompted to download the Healthinote app the first time you receive an information prescription, and the content will then load onto your phone. On future occasions you will be able to click straight through to the prescribed information.</p>
-                </>
-            },
-            {
-                q: "What do you do with my data?",
-                a: <>
-                    <p>We do not require you to provide any personal information and only track anonymised data. The app has security options so that sensitive content can be secured and accessed only with a password, fingerprint or face ID.</p>
-                </>
-            },
-            {
-                q: "How often will the information on Healthinote be checked and reviewed so that the advice remains current and safe?",
-                a: <>
-                    <p>Our sources of content are carefully vetted by Cognitant’s clinical director, with support from our clinical advisory board. In most cases, we provide redirect links to the content on the partner websites, so that information remains up to date. In the case of the NHS, we have a licensing agreement to reproduce the content in the app. We have a feed for the content from the NHS so that content is updated automatically with updates made to the NHS website. Content developed by Cognitant Group is reviewed regularly (as a minimum annually) and updated to ensure it is compliant with the latest guidelines and reflects best practice.</p>
-                </>
-            },
-            {
-                q: "Can we include Healthinote in our practice website?",
-                a: <>
-                    <p>Yes. We can provide you with information to help you give patients instructions as to how to access Healthinote.  Please contact Cognitant’s marketing director, Alex Merckx Alex.Merckx@cognitant.com for this support.</p>
-                </>
-            },
-            {
-                q: "How do your commercial and financial arrangements work?",
-                a: <>
-                    <p>Our standard service is available for free to both health care professionals and patients using NHS services.</p>
-                    <p>Charges are applied for:</p>
-                    <ul>
-                        <li>commissioned content: eg an organisation may wish to commission specific content to address a particular care pathway or service</li>
-                        <li>additional services: eg detailed reporting or an interface to upload locally developed content</li>
-                    </ul>
-                    <p>Content may be funded or commissioned by industry partners such as Pharma but, in this case, the sponsorship is clearly labelled and content must follow strict compliance rules as well as our stringent review process that we have built with our advisory group. Information about a specific product, for example an inhaler, is only available for patients who have been prescribed that particular product.</p>
-                </>
-            },
-            {
-                q: "Do you do any user testing?",
-                a: <>
-                    <p>Yes, <a href="#User-testing">user testing</a> is conducted on an ongoing basis with patients and healthcare professionals. For more information about input received from user testing, please contact Cognitant’s Mmarketing dDirector, Alex Merckx (<a href="mailto:alex.merckx@cognitant.com">alex.merckx@cognitant.com</a>).</p>
-                </>
-            }
-        ]
-    },
-    testimonials: {
-        heading: "Testimonials",
-        testimonialSections: [
-            {
-                title: "Health Care Professionals",
-                quotes: [
-                    {
-                        quote: `"I have found invaluable on a day-to-day basis in practice. It allows me to free up some of my clinical time by guiding the patient towards a reliable source of education to improve the patients understanding and knowledge. In times where General Practice is under an increased burden to do more and more, it is encouraging to know that there are ideas out there to support the GP as a clinician."`,
-                        from: "GP"
-                    },
-                    {
-                        quote: `"This tool will enable care workers like myself to learn visually about how to effectively manage sepsis, deal with a deteriorating resident and understand the principals of infection control.  I think it will improve our confidence in managing such cases and thus improve the care received by the residents."`,
-                        from: "Care Provider"
-                    },
-                ]
-            },    
-            {
-                title: "Patients",
-                quotes: [
-                    {
-                        quote: `"I found it all so informative and simple to understand. The navigation section is simple to use and allows you to skip to the sections that are relevant to you. It is explained clearly and concisely and the avatar makes it a lot more user friendly."`,
-                    },
-                    {
-                        quote: `"There needs to be more like this to help educate and inform people. Amazing!"`
-                    },
-                    {
-                        quote: `"If I had this when I was diagnosed it would have been so helpful"`
-                    },
-                ]
-            }
-        ]
-    },
-    testing: {
-        heading: "User testing",
-        content: <>
-            <CustomText size={theme.font.medium}>Over 60 patients and healthcare professionals (doctors, nurses, carers, physiotherapists) have been consulted as part of our ongoing user research programme.</CustomText>
-            <p>The research has highlighted the wide range of needs that healthinote users have, including cognitive load or impairment, mobility issues which make certain kinds of screen interactions more challenging, and visual impairments. This has led to careful attention being paid to reducing the amount of text on the screen, improvements to the search facility, and increasing the target size of buttons/clickable areas. Search data and app analytics have also been reviewed to identify patterns of usage.</p>
-            <p>Users have been shown designs and prototypes to help to test the quality of the designs and enable us to improve the service.</p>
-            <p>Some comments from users involved in the testing include:</p>
-            <ul>
-                <li><i>"I'm newly diagnosed and I think it's really helpful."</i>&nbsp;Female, 37</li>
-                <li><i>"It feels comfortable and takes away the scary aspect of getting help about a health issue."</i>&nbsp;Female, 21</li>
-                <li><i>"I like this because you can digest it at your leisure."</i>&nbsp;Nurse, 52</li>
-                <li><i>"This is really good. This is something that a lot of patients and carers would like."</i>&nbsp;Nurse, 52</li>
-                <li><i>"It's easy to navigate."</i>&nbsp;Male, 31</li>
-                <li><i>"This is easier to digest than what I find online. Like the visual aids, [and I] like to know what’s causing the condition. My GP wouldn’t always have time to talk about it, they’d just talk about treatment. It’s really thorough. It goes into the background before talking about treating it, I like that."</i>&nbsp;Female, 31</li>
-            </ul>
-        </> 
-    },
-    team: {
-        heading: "Meet the team",
-        members: [
-            {
-                image: require("../images/team/tim.png"),
-                name: 'Dr Tim Ringrose',
-                position: 'Chief Executive Office and Founder',
-                color: theme.color.orange,
-                links: {
-                    twitter: 'https://twitter.com/timringrose',
-                    linkedin: 'https://www.linkedin.com/in/timringrose/'
-                },
-                more: 'A nephrologist and intensive care specialist, Tim helped to build Doctors.net.uk, the UK’s leading online doctor community, taking on the role of CEO in 2011. When the company was acquired by M3 Group, Tim became CEO of M3’s European division up until he founded Cognitant Group in 2018. He is a mentor for the NHS clinical entrepreneur programme and serves as a non-executive director and adviser for several other health technology companies. Tim originally planned to be an engineer and spends his spare time taking things apart. Sometimes he even fixes them!'
-            },
-            {
-              image: require("../images/team/daisy.png"),
-              name: 'Daisy Allington',
-              color: theme.color.orange,
-              position: 'Chief Operating Officer and Founder',
-              links: {
-                  twitter: 'https://twitter.com/daisy_allington',
-                  linkedin: 'https://www.linkedin.com/in/daisy-allington-8656578/'
-              },
-              more: 'Daisy has an established career in running commercial and operational functions of health technology companies. After graduating with BA (hons) in Languages for Business, Daisy started out her career as a marketer for a major NGO and developed into an exceptional client service manager in the healthcare industry. She led the client services and operations divisions for M3 (EU) for 5 years, and was responsible for the recruitment and retention of staff, key account management, new business development and operational excellence strategies, demonstrating an impressive growth in top line sales, profitability and client retention. Daisy is a natural project manager and is leads our operations and commercial activities.'
-            },
-            {
-                image: require("../images/team/rick.png"),
-                name: 'Rick Knowles',
-                position: 'Chief Technical Officer and Founder',
-                color: theme.color.orange,
-                links: {
-                    twitter: null,
-                    linkedin: 'https://linkedin.com/in/rick-knowles-a578797b'
-                },
-                more: 'Rick leads the development of Cognitant’s proprietary platforms and immersive experiences for patients and healthcare professionals, which manages to incorporate all his favourite elements of technology in the one job, including game engines, smartphones and making technology solve hard-to-reach problems that no-one else has fixed yet. He has been a core part of many startups over a long career, in the beginning as an electrical engineer with a talent for software development, and more recently as a CTO for the last 10 years (after having a turn covering almost every job in between!).'
-            },
-            {
-                image: require("../images/team/juhi.png"),
-                name: 'Dr Juhi Tandon',
-                color: theme.color.orange,
-                position: 'Clinical Director and Founder',
-                links: {
-                    twitter: null,
-                    linkedin: 'https://www.linkedin.com/in/juhi-tandon-b439aaa1/'
-                },
-                more: 'As Clinical Director for Cognitant Juhi is passionate about empowering patients to make informed decisions about their health. She graduated from University College London in 2005 and during this period, undertook a BSc in Pharmacology (2002), gaining 1st Class honours, the AJ Clark Prize and the Jackson Lewis Scholarship Award for academic achievement. Juhi is a practising NHS GP and has been for 10 years, with specialist interests in women’s health, dermatology and GP education. She is also involved in teaching junior doctors attached to primary care. Outside of work she is a classic foodie but also enjoys a good fine wine and travelling with her family in the USA.'
-            },
-            {
-                image: require("../images/team/becca.png"),
-                name: 'Becca Sharman',
-                position: 'Business Director',
-                color: theme.color.blue,
-                links: {
-                    twitter: 'https://www.linkedin.com/in/becca-sharman-417ab646/',
-                    linkedin: 'https://www.twitter.com/BeccaLSharman'
-                },
-                more: 'Becca joined us in May 2019 and leads on all new business activity, working with clients across the healthcare sector including pharmaceutical, charity and NHS clients. With a BSc in Biochemistry, she has a knack and real enjoyment for devouring a problem and developing innovative solutions that align with a client’s wider strategy. A talented researcher, proposal/bid writer and pitcher with a demonstrated track record over a number of years in the MedTech industry. When Becca isn’t out working with our clients, she’s usually found on a climbing wall or really any piece or rock she can cling to.'
-            },
-            {
-                image: require("../images/team/alex.png"),
-                name: 'Alex Merckx',
-                position: 'Director of Marketing and Partnerships',
-                color: theme.color.blue,
-                links: {
-                    twitter: null,
-                    linkedin: 'https://www.linkedin.com/in/alex-merckx-a7b5b360/'
-                },
-                more: 'Alex has extensive experience in developing business and marketing strategy for the healthcare, digital, publishing and B2B industries. A graduate in Economics and French from the University of Nottingham and Marketing from the Chartered Institute of Marketing, Alex formed part of the Doctors.net.uk team in its early years. Having worked in multiple sales and marketing roles for JohnsonDiversey, Alex ran for a number of years her own consultation business. She moved on to become International Development Manager and then Marketing Director for M3 Europe. Prior to joining Cognitant, Alex was Marketing Director for the Corporate Solutions division of Wiley, an academic publisher of scientific research. In her spare time, Alex can sometimes be seen performing music in Oxfordshire, if anyone is prepared to listen to her!'
-            },
-            {
-                image: require("../images/team/emma.png"),
-                name: 'Emma Bishop',
-                color: theme.color.blue,
-                position: 'Head of Content',
-                links: {
-                    twitter: null,
-                    linkedin: null
-                },
-                more: "Emma's role is to craft immersive, engaging, and accurate campaigns that meet client objectives, working with the wider team to dream up content that captivates viewers. After studying Medical Biochemistry at the University of Manchester, science and medical communications have been at the heart of her work. In 2019, she began working for Cognitant, where her years of experience working on digital strategies could be channelled into an innovative medium that has the power to influence and improve many lives. On the weekend she exchanges her office for a stage, singing and playing guitar with her band."
-            },
-            {
-                image: require("../images/team/jake.png"),
-                name: 'Jake Sykes',
-                color: theme.color.blue,
-                position: 'Account Director',
-                links: {
-                    twitter: null,
-                    linkedin: 'https://linkedin.com/in/jakesykes'
-                },
-                more: null
-            }
-        ]
-    }
-}
+import FirstSection from '../components/FirstSection'
+import CardBordered from '../components/CardBordered'
+import {
+    CustomText,
+    Quote,
+    CardText,
+    FlexWrapper,
+    HorizontalRule,
+    HorizontalScroller
+  } from '../components/StyledComponents'
 
 export default function About() {
-    const [modal, setModal] = useState(false)
+    const [contactMoreDetails, setContactMoreDetails] = useState('')
+    const [toggleMoreDetails, setToggleMoreDetails] = useState(false)
+
+    const data = useStaticQuery(graphql`
+    query {
+      buildings: file(relativePath: { eq: "buildings.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      Prototype: file(relativePath: { eq: "healthinote_old.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      V1: file(relativePath: { eq: "healthinote_new.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      mission: file(relativePath: { eq: "mission_icon.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      vision: file(relativePath: { eq: "vision_icon.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      purpose: file(relativePath: { eq: "purpose_icon.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      tim: file(relativePath: { eq: "tim.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      rick: file(relativePath: { eq: "rick.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      daisy: file(relativePath: { eq: "daisy.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      juhi: file(relativePath: { eq: "juhi.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      becca: file(relativePath: { eq: "becca.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      alex: file(relativePath: { eq: "alex.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      emma: file(relativePath: { eq: "emma.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      jake: file(relativePath: { eq: "jake.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      bayer: file(relativePath: { eq: "client_bayer.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      berkshire: file(relativePath: { eq: "client_berkshire.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      health_foundation: file(relativePath: { eq: "client_health_foundation.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      innovateuk: file(relativePath: { eq: "client_innovateuk.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      sanofi: file(relativePath: { eq: "client_sanofi.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      servier: file(relativePath: { eq: "client_servier.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      ucb: file(relativePath: { eq: "client_ucb.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      brompton_nhs: file(relativePath: { eq: "partner_brompton_nhs.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      brookes: file(relativePath: { eq: "partner_brookes.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      cambridge_nhs: file(relativePath: { eq: "partner_cambridge_nhs.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      econsult: file(relativePath: { eq: "partner_econsult.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      esc: file(relativePath: { eq: "partner_esc.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      gcrf: file(relativePath: { eq: "partner_gcrf.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      hci: file(relativePath: { eq: "partner_hci.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      ics: file(relativePath: { eq: "partner_ics.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      imperial: file(relativePath: { eq: "partner_imperial.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      ips: file(relativePath: { eq: "partner_ips.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      nhs_england: file(relativePath: { eq: "partner_nhs_england.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      orcha: file(relativePath: { eq: "partner_orcha.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      oxford: file(relativePath: { eq: "partner_oxford.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      pkb: file(relativePath: { eq: "partner_pkb.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      rcgp: file(relativePath: { eq: "partner_rcgp.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      rcp: file(relativePath: { eq: "partner_rcp.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      sanignacio: file(relativePath: { eq: "partner_sanignacio.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      sickle_cell: file(relativePath: { eq: "partner_sickle_cell.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      wessex: file(relativePath: { eq: "partner_wessex.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      pm_society: file(relativePath: { eq: "pm_society.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      oxba: file(relativePath: { eq: "oxba.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
+    const cardData = [
+      {
+        title: "Mission",
+        subtitle: "To empower people with clear, reliable health information",
+        fluid: data.mission.childImageSharp.fluid,
+        color: theme.color.blue,
+        flex: 1,
+        spaced: true,
+      },
+      {
+        title: "Vision",
+        subtitle: "A world where everyone understands their health and treatment",
+        fluid: data.vision.childImageSharp.fluid,
+        color: theme.color.orange,
+        flex: 1,
+        spaced: true,
+      },
+      {
+        title: "Purpose",
+        subtitle: "To drive better health outcomes and save lives",
+        fluid: data.purpose.childImageSharp.fluid,
+        color: theme.color.yellow,
+        flex: 1,
+        spaced: true,
+      },
+    ]
+
+    const clients = [
+      data.bayer.childImageSharp.fluid,
+      data.berkshire.childImageSharp.fluid,
+      data.health_foundation.childImageSharp.fluid,
+      data.innovateuk.childImageSharp.fluid,
+      data.sanofi.childImageSharp.fluid,
+      data.servier.childImageSharp.fluid,
+      data.ucb.childImageSharp.fluid
+    ]
+
+    const partners = [
+      data.brompton_nhs.childImageSharp.fluid,
+      data.brookes.childImageSharp.fluid,
+      data.cambridge_nhs.childImageSharp.fluid,
+      data.econsult.childImageSharp.fluid,
+      data.esc.childImageSharp.fluid,
+      data.gcrf.childImageSharp.fluid,
+      data.hci.childImageSharp.fluid,
+      data.ics.childImageSharp.fluid,
+      data.imperial.childImageSharp.fluid,
+      data.ips.childImageSharp.fluid,
+      // data.nsh_england.childImageSharp.fluid,
+      data.orcha.childImageSharp.fluid,
+      data.oxford.childImageSharp.fluid,
+      data.pkb.childImageSharp.fluid,
+      data.rcgp.childImageSharp.fluid,
+      data.rcp.childImageSharp.fluid,
+      data.sanignacio.childImageSharp.fluid,
+      data.sickle_cell.childImageSharp.fluid,
+      data.ucb.childImageSharp.fluid,
+      data.wessex.childImageSharp.fluid
+    ]
+
+    const awards = [
+      data.pm_society.childImageSharp.fluid,
+      data.oxba.childImageSharp.fluid
+    ]
+
+    const images = [
+        {
+            image: data.Prototype.childImageSharp.fluid,
+            quote: 'Prototype'
+        },
+        {
+            image: data.V1.childImageSharp.fluid,
+            quote: 'V1.0'
+        }
+    ]
+
+    const team = [
+      {
+          image: data.tim.childImageSharp.fluid,
+          name: 'Dr Tim Ringrose',
+          position: 'Chief Executive Office and Founder',
+          color: theme.color.orange,
+          links: {
+              twitter: 'https://twitter.com/timringrose',
+              linkedin: 'https://www.linkedin.com/in/timringrose/'
+          },
+          more: 'A nephrologist and intensive care specialist, Tim helped to build Doctors.net.uk, the UK’s leading online doctor community, taking on the role of CEO in 2011. When the company was acquired by M3 Group, Tim became CEO of M3’s European division up until he founded Cognitant Group in 2018. He is a mentor for the NHS clinical entrepreneur programme and serves as a non-executive director and adviser for several other health technology companies. Tim originally planned to be an engineer and spends his spare time taking things apart. Sometimes he even fixes them!'
+      },
+      {
+        image: data.daisy.childImageSharp.fluid,
+        name: 'Daisy Allington',
+        color: theme.color.orange,
+        position: 'Chief Operating Officer and Founder',
+        links: {
+            twitter: 'https://twitter.com/daisy_allington',
+            linkedin: 'https://www.linkedin.com/in/daisy-allington-8656578/'
+        },
+        more: 'Daisy has an established career in running commercial and operational functions of health technology companies. After graduating with BA (hons) in Languages for Business, Daisy started out her career as a marketer for a major NGO and developed into an exceptional client service manager in the healthcare industry. She led the client services and operations divisions for M3 (EU) for 5 years, and was responsible for the recruitment and retention of staff, key account management, new business development and operational excellence strategies, demonstrating an impressive growth in top line sales, profitability and client retention. Daisy is a natural project manager and is leads our operations and commercial activities.'
+      },
+      {
+          image: data.rick.childImageSharp.fluid,
+          name: 'Rick Knowles',
+          position: 'Chief Technical Officer and Founder',
+          color: theme.color.orange,
+          links: {
+              twitter: null,
+              linkedin: 'https://linkedin.com/in/rick-knowles-a578797b'
+          },
+          more: 'Rick leads the development of Cognitant’s proprietary platforms and immersive experiences for patients and healthcare professionals, which manages to incorporate all his favourite elements of technology in the one job, including game engines, smartphones and making technology solve hard-to-reach problems that no-one else has fixed yet. He has been a core part of many startups over a long career, in the beginning as an electrical engineer with a talent for software development, and more recently as a CTO for the last 10 years (after having a turn covering almost every job in between!).'
+      },
+      {
+          image: data.juhi.childImageSharp.fluid,
+          name: 'Dr Juhi Tandon',
+          color: theme.color.orange,
+          position: 'Clinical Director and Founder',
+          links: {
+              twitter: null,
+              linkedin: 'https://www.linkedin.com/in/juhi-tandon-b439aaa1/'
+          },
+          more: 'As Clinical Director for Cognitant Juhi is passionate about empowering patients to make informed decisions about their health. She graduated from University College London in 2005 and during this period, undertook a BSc in Pharmacology (2002), gaining 1st Class honours, the AJ Clark Prize and the Jackson Lewis Scholarship Award for academic achievement. Juhi is a practising NHS GP and has been for 10 years, with specialist interests in women’s health, dermatology and GP education. She is also involved in teaching junior doctors attached to primary care. Outside of work she is a classic foodie but also enjoys a good fine wine and travelling with her family in the USA.'
+      },
+      {
+          image: data.becca.childImageSharp.fluid,
+          name: 'Becca Sharman',
+          position: 'Business Director',
+          color: theme.color.blue,
+          links: {
+              twitter: 'https://www.linkedin.com/in/becca-sharman-417ab646/',
+              linkedin: 'https://www.twitter.com/BeccaLSharman'
+          },
+          more: 'Becca joined us in May 2019 and leads on all new business activity, working with clients across the healthcare sector including pharmaceutical, charity and NHS clients. With a BSc in Biochemistry, she has a knack and real enjoyment for devouring a problem and developing innovative solutions that align with a client’s wider strategy. A talented researcher, proposal/bid writer and pitcher with a demonstrated track record over a number of years in the MedTech industry. When Becca isn’t out working with our clients, she’s usually found on a climbing wall or really any piece or rock she can cling to.'
+      },
+      {
+          image: data.alex.childImageSharp.fluid,
+          name: 'Alex Merckx',
+          position: 'Director of Marketing and Partnerships',
+          color: theme.color.blue,
+          links: {
+              twitter: null,
+              linkedin: 'https://www.linkedin.com/in/alex-merckx-a7b5b360/'
+          },
+          more: 'Alex has extensive experience in developing business and marketing strategy for the healthcare, digital, publishing and B2B industries. A graduate in Economics and French from the University of Nottingham and Marketing from the Chartered Institute of Marketing, Alex formed part of the Doctors.net.uk team in its early years. Having worked in multiple sales and marketing roles for JohnsonDiversey, Alex ran for a number of years her own consultation business. She moved on to become International Development Manager and then Marketing Director for M3 Europe. Prior to joining Cognitant, Alex was Marketing Director for the Corporate Solutions division of Wiley, an academic publisher of scientific research. In her spare time, Alex can sometimes be seen performing music in Oxfordshire, if anyone is prepared to listen to her!'
+      },
+      {
+          image: data.emma.childImageSharp.fluid,
+          name: 'Emma Bishop',
+          color: theme.color.blue,
+          position: 'Head of Content',
+          links: {
+              twitter: null,
+              linkedin: null
+          },
+          more: "Emma's role is to craft immersive, engaging, and accurate campaigns that meet client objectives, working with the wider team to dream up content that captivates viewers. After studying Medical Biochemistry at the University of Manchester, science and medical communications have been at the heart of her work. In 2019, she began working for Cognitant, where her years of experience working on digital strategies could be channelled into an innovative medium that has the power to influence and improve many lives. On the weekend she exchanges her office for a stage, singing and playing guitar with her band."
+      },
+      {
+          image: data.jake.childImageSharp.fluid,
+          name: 'Jake Sykes',
+          color: theme.color.blue,
+          position: 'Account Director',
+          links: {
+              twitter: null,
+              linkedin: 'https://linkedin.com/in/jakesykes'
+          },
+          more: null
+      }
+    ]
+
     return (
-        <Layout modal={modal} setModal={setModal}>
-            <SEO title="About Healthinote" />
-            <FAQSection content={content.FAQs} />
-            <TestimonialSection content={content.testimonials} />
-            <TestingSection content={content.testing} />
-            <TeamSection content={content.team} setModal={setModal} />
-        </Layout>
+        <Layout>
+          {toggleMoreDetails && <FlexWrapper column VAlign='center' HAlign='center' 
+            style={{position: 'fixed', top: '0px', left: '0px', height: '100vh',width: '100vw', backgroundColor: 'rgba(0, 0, 0, 0.31)', zIndex: 1}}
+            onClick={() => setToggleMoreDetails(false)}
+          >
+            <div style={{ padding: '10px', width: '50%', minWidth: '300px', minHeight: '300px', backgroundColor: "white", borderRadius: '0.5rem', overflowY: 'scroll' }}>
+              <button
+                style={{ 
+                  border: "none",
+                  backgroundColor: "#fff",
+                  color: theme.color.blue,
+                  float: 'right',
+                  margin: '10px'
+                }} 
+                onClick={() => setToggleMoreDetails(false)}
+              >
+                X
+              </button>
+              <CustomText fsize='2vh' style={{ margin: '10px' }}>{contactMoreDetails}</CustomText>
+            </div>
+          </FlexWrapper>}
+          <SEO title="About Us" />
+          <FirstSection 
+              titleText={"Mission, vision, purpose."}
+              descText={"We empower patients with clear, reliable health information, helping patients to make informed decisions and healthcare professionals to deliver best care."}
+              imgFluid={data.buildings.childImageSharp.fluid}
+              cardData={cardData}
+          />
+          <div style={{ backgroundColor: theme.color.blue }}>
+            <FlexWrapper column HAlign='center' style={{ margin: "auto", maxWidth: "1000px", backgroundColor: theme.color.blue, padding: "20px 0px" }}>
+                <CustomText fweight={'500'} fsize={'4vh'} color="white">Our story</CustomText>
+                <CardText fsize={'2.4vh'} color="white">Founded in Oxford, UK, in 2018, Cognitant is the brainchild of four experienced healthcare and medical communications professionals: Chief Technology Officer Rick Knowles, Clinical Director Dr Juhi Tandon, Chief Operating Officer Daisy Allington, and Chief Executive Officer Dr Tim Ringrose, previously a kidney specialist at Oxford University Hospital.</CardText>
+                <CardText fsize={'2vh'} color="white">Cognitant offers clear, clinically led information that can be prescribed by a doctor and easily accessed by patients on smartphones, tablets and in virtual reality, at their convenience.</CardText>
+            </FlexWrapper>
+          </div>
+            
+          <FlexWrapper column HAlign='center' style={{ padding: '25px 0', backgroundColor: 'white', width: "100%" }}>
+              <CustomText fweight={'500'} fsize={'4vh'} color={theme.color.blue}>Who we work with</CustomText>
+              <CustomText fweight={'500'} fsize={'3vh'} color={theme.color.orange}>Our clients</CustomText>
+              <HorizontalScroller>
+                {clients.map(client => <Img fluid={client} imgStyle={{objectFit: 'contain'}}  style={{ margin: '16px', width: "150px", minWidth: '100px' }} />)}
+              </HorizontalScroller>
+          </FlexWrapper>
+          <FlexWrapper column HAlign='center' style={{ padding: '25px 0', backgroundColor: theme.color.lightBlue, width: "100%" }}>
+              <CustomText fweight={'500'} fsize={'3vh'} color={theme.color.orange}>Our partners</CustomText>
+              <HorizontalScroller>
+                {partners.map(partner => <Img fluid={partner} imgStyle={{objectFit: 'contain'}} style={{ margin: '16px', width: "150px", minWidth: '100px' }} />)}
+              </HorizontalScroller>
+          </FlexWrapper>
+          <FlexWrapper column HAlign='center' style={{ padding: '25px 0', backgroundColor: 'white', width: "100%" }}>
+              <CustomText fweight={'500'} fsize={'3vh'} color={theme.color.orange}>Awards</CustomText>
+              <HorizontalScroller>
+                {awards.map(award => <Img fluid={award} imgStyle={{objectFit: 'contain'}} style={{ margin: '16px', width: "150px", minWidth: '100px' }} />)}
+              </HorizontalScroller>
+          </FlexWrapper>
+
+          <div style={{ backgroundColor: theme.color.lightBlue }}>
+            <FlexWrapper column HAlign='center' style={{ margin: "auto", padding: '25px', maxWidth: "1000px" }}>
+                <CardText id="the-healthinote-story" fweight={'500'} fsize={'4vh'} color={theme.color.blue}>The Healthinote story</CardText>
+                <CardText fsize={'2vh'}>Our Healthinote service for information prescriptions was inspired by discussions with patients and clinicians. At the early stages of the company when we were building and testing immersive experiences about health, we realised that there was a need for a system for patients and the public to receive recommended health information from a health professional. We used a rapid product design process to build and test a basic prototype with users then set out a product development plan to build our version 1 product.</CardText>
+                <CardText fsize={'2vh'}>We learned a lot when we tested our first version with a range of people from different backgrounds and ages (some with long-term conditions). We had positive comments:</CardText>
+                <Quote>“It’s a really good idea, having tailored information just for you. I’d use it if I was considering a new treatment – especially one where there’s a lot to think about.”</Quote><Quote>“I like that it tells you to talk to an HCP. That’s important and it makes me trust it more."</Quote>&nbsp;
+                <Quote>It’s professional but it’s also fun because of how it’s presented.</Quote>&nbsp;
+                <HorizontalRule />
+                <CardText fsize={'2vh'}>But we also learned a lot from some of the comments:</CardText>
+                <FlexWrapper VAlign="center">
+                    <Quote>“I think it’s a bit too abstract…make it more relatable”</Quote>&nbsp;
+                    <Quote>“The video is way too long and repetitive. I find it a bit confusing”</Quote>&nbsp;
+                    <Quote>“It’s way too slow.”</Quote>&nbsp;
+                    <Quote>“It’s not obvious that you can click on that”</Quote>&nbsp;
+                </FlexWrapper>
+                <HorizontalRule />
+                <CardText fsize={'2vh'}>We’ve updated and amended the apps based on user testing and feedback, also added new features suggested by users – both healthcare professionals and patients – and we continue to do that.</CardText>
+                <CardText fsize={'2vh'}>You can see the look of the app has changed quite a lot since our first prototype:</CardText>
+                <FlexWrapper VAlign={'space-around'}>
+                    {images.map(({image, quote}, key) => 
+                        <div style={{width: '200px', margin: '20px'}} key={key}>
+                            <Img fluid={image}/>
+                            <p style={{textAlign: 'center'}}>{quote}</p>
+                        </div>
+                    )}
+                </FlexWrapper>
+                <CardText fsize={'2vh'}>If you would like to help us with user testing, please get in touch! <span style={{ color: theme.color.orange }}>hello@cognitant.com</span></CardText>
+            </FlexWrapper>
+          </div>
+          
+          <FlexWrapper column HAlign='center' style={{ padding: "20px 0px" }}>
+              <CustomText fweight={'500'} fsize={'4vh'} color={theme.color.blue}>Meet the team</CustomText>
+              <FlexWrapper VAlign='center'>
+                {team.map(({image, name, color, position, links, more}, key) => 
+                  <CardBordered team height={'30vh'} style={{maxWidth: '300px', marginTop: '95px' }} color={color} key={key} align={'flex-start'}>
+                    <Img fluid={image} style={{ margin: '-95px 0 5px', width: '150px', minHeight: "150px" }} />
+                    <CardText fsize='2.4vh' fweight='500'>{name}</CardText>
+                    <CardText fsize='2vh'>{position}</CardText>
+                    <FlexWrapper VAlign='center'>
+                      {links.twitter && <a target="_blank" rel="noreferrer" href={links.twitter}>
+                        <div style={{width: '30px', margin: '10px'}}>
+                          <img src={require("../images/twitter.svg")} alt="twitter"/>
+                        </div>
+                      </a>}
+                      {links.linkedin && <a target="_blank" rel="noreferrer" href={links.linkedin}>
+                        <div style={{width: '30px', margin: '10px'}}>
+                          <img src={require("../images/linkedin.svg")} alt="linkedin"/>
+                        </div>
+                      </a>}
+                    </FlexWrapper>
+                    {more && <CustomText 
+                      fweight='500' 
+                      fsize='2vh' 
+                      color={theme.color.orange}
+                      style={{ marginTop: "auto", cursor: "pointer", color: theme.color.blue }}
+                      onClick={() => {
+                        setContactMoreDetails(more)
+                        setToggleMoreDetails(true)
+                      }}
+                    >
+                      Read more
+                    </CustomText>}
+                  </CardBordered>
+                )}
+              </FlexWrapper>
+          </FlexWrapper>
+      </Layout>
     )
 }
 
