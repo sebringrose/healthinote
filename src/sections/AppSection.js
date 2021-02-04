@@ -29,8 +29,8 @@ export default function AppSection({ content, reverse, background }) {
                     {content.download && <>
                         {content.download.text && <CustomText size={theme.font.default} weight={600} color={theme.color.orange} margin="1rem 0 0">{content.download.text}</CustomText>}
                         <CenterFlex justify="space-around">
-                            {content.download.googleLink && <a href={content.download.googleLink}><img style={{ margin: "1rem", width: "200px" }} src={require("../images/google-play.png")} /></a>}
-                            {content.download.iosLink && <a href={content.download.iosLink}><img style={{ margin: "1rem", width: "200px"}} src={require("../images/app-store.png")} /></a>}
+                            {content.download.googleLink && <a href={content.download.googleLink}><img style={{ margin: "1rem", width: "200px" }} src={require("../images/google-play.png")} alt="google-play-store"/></a>}
+                            {content.download.iosLink && <a href={content.download.iosLink}><img style={{ margin: "1rem", width: "200px"}} src={require("../images/app-store.png")} alt="apple-app-store"/></a>}
                         </CenterFlex>
                     </>}
                 </AppText>

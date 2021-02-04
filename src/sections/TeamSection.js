@@ -21,7 +21,7 @@ export default function TeamSection({ content, setModal }) {
 }
 
 const Member = ({setModal, image, name, color, position, links, more}) => <CardBordered team height={'30vh'} style={{maxWidth: '300px', marginTop: '95px' }} color={color} align={'flex-start'}>
-    <img src={image} style={{ margin: '-95px 0 5px', width: '150px', minHeight: "150px" }} />
+    <img src={image} style={{ margin: '-95px 0 5px', width: '150px', minHeight: "150px" }} alt={name}/>
     <CardText size={theme.font.medium} weight='600'>{name}</CardText>
     <CardText size={theme.font.default}>{position}</CardText>
     <CenterFlex align='center'>
