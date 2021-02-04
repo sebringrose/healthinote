@@ -106,8 +106,8 @@ const content = {
                 title: "I'M FROM THE HEALTHCARE INDUSTRY",
                 content: <>
                     <VideoSection content={{
-                        video: require('../images/Cognitant-innovation_optimised.mp4'),
-                        linkedVideo: require('../images/Cognitant-innovation.mp4'),
+                        video: require('../images/cognitant_innovation_optimised.mp4'),
+                        linkedVideo: require('../images/cognitant_innovation.mp4'),
                         heading: "Health information, delivered better.",
                         subtitle: "Cognitant, the power behind Healthinote, specialises in creating clear and reliable health information.",
                         text: [
