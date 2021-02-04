@@ -63,7 +63,7 @@ const content = {
                         ]
                     }} />
                     <VideoSection content={{
-                        video: require('../images/Healthinote_eConsult_optimised.mp4'),
+                        video: require('../images/healthinote_eConsult_optimised.mp4'),
                         heading: "Integrated with eConsult",
                         text: [
                             "Healthcare professionals using eConsult can search and send health information directly to patients via their eConsult post consult messaging tool.",
