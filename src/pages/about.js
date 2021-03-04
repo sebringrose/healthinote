@@ -18,22 +18,22 @@ const content = {
             {
                 q: "How does Healthinote ensure that all content and their sources are credible and can be trusted?",
                 a: <>
-                    <p>We are careful to only use sources of health information that are known to be clinically- led, trusted and reliable. With the support of our advisory board, our clinical director makes decisions about which resources should be included for the library.  Our content sources currently include:</p>
+                    <p>We are careful to only use sources of health information that are known to be clinically led, trusted and reliable. With the support of our advisory board, our clinical director makes decisions about which resources should be included for the library.  Our content sources currently include:</p>
                     <ul>
                         <li>the NHS Health A to Z and medication library</li>
-                        <li>charity partners, including Macmillan, Cancer Research UK, Asthma UK, British Pregnancy Advisory Service, Royal National Institute of Blind PeopleBPAS, RNIB, Mind, and many more</li>
+                        <li>charity partners, including Macmillan, Cancer Research UK, Asthma UK, British Pregnancy Advisory Service, Royal National Institute of Blind People, Mind, and many more</li>
                         <li>HCI’s library of Health and Care videos, which has been commissioned by NHSX</li>
-                        <li>Cognitant Group Ltd (the parent company of Healthinote), which specialises in visual and interactive content, with all content created by medical writers followed by a stringent clinical review process.</li>
+                        <li>Cognitant Group Ltd (the parent company of Healthinote), which specialises in visual and interactive content, with all content created by medical writers followed by a stringent clinical review process</li>
                     </ul>
                     <p>Our trusted charity content partners have been included in response to a survey that we have circulated amongst GPs to ask for their preferred content sources. The source of all content that appears in Healthinote is clearly shown.</p>
                 </>
             },
             {
-                q: "How can I, as a doctor, send health information prescriptions using Healthinote Pro vía eConsult?",
+                q: "How can I, as a doctor, send health information prescriptions using Healthinote Pro via eConsult?",
                 a: <>
                     <p><strong>If you are a clinician&nbsp;</strong>with access to eConsult, sending an information prescription is easy.</p>
                     <p>When you are in the post consult messaging service (PCM) you have access to the Healthinote search bar. Use the search bar to search for any health information. For example, if you search ‘contraception’, it will bring up all contraception health information from a variety of trusted sources. You can click to ‘preview’ the content and then press ‘insert’ to insert the link into the body of your message. Any links you insert will be sent to the patient who can then access the information via the Healthinote app for free.</p>
-                    <p><a href="https://youtu.be/Cl9aUR9kkc0" target="_blank">This video may help summarise the above.</a></p>
+                    <p><a onClick={() => { window.outboundLink("https://youtu.be/Cl9aUR9kkc0"); return false }} href="https://youtu.be/Cl9aUR9kkc0" >This video may help summarise the above (this link will direct you to YouTube).</a></p>
                     <p><strong>If you are a patient</strong>, you will receive an email from your clinician, which will include links to the content selected by them. On receiving these links, you can simply click on them to access the information. If you are using a smartphone, you will be prompted to download the Healthinote app the first time you receive an information prescription, and the content will then load onto your phone. On future occasions you will be able to click straight through to the prescribed information.</p>
                 </>
             },
@@ -52,13 +52,13 @@ const content = {
             {
                 q: "Can we include Healthinote in our practice website?",
                 a: <>
-                    <p>Yes. We can provide you with information to help you give patients instructions as to how to access Healthinote.  Please contact Cognitant’s marketing director, Alex Merckx Alex.Merckx@cognitant.com for this support.</p>
+                    <p>Yes. We can provide you with information to help you give patients instructions as to how to access Healthinote.  Please contact Cognitant’s marketing director, Alex Merckx (<a onClick={() => { window.outboundLink("mailto:alex.merckx@cognitant.com"); return false }} href="mailto:alex.merckx@cognitant.com">alex.merckx@cognitant.com</a>) for this support.</p>
                 </>
             },
             {
                 q: "How do your commercial and financial arrangements work?",
                 a: <>
-                    <p>Our standard service is available for free to both health care professionals and patients using NHS services.</p>
+                    <p>Our standard service is available for free to both healthcare professionals and patients using NHS services.</p>
                     <p>Charges are applied for:</p>
                     <ul>
                         <li>commissioned content: eg an organisation may wish to commission specific content to address a particular care pathway or service</li>
@@ -70,7 +70,7 @@ const content = {
             {
                 q: "Do you do any user testing?",
                 a: <>
-                    <p>Yes, <a href="#User-testing">user testing</a> is conducted on an ongoing basis with patients and healthcare professionals. For more information about input received from user testing, please contact Cognitant’s Mmarketing dDirector, Alex Merckx (<a href="mailto:alex.merckx@cognitant.com">alex.merckx@cognitant.com</a>).</p>
+                    <p>Yes, <a onClick={() => window.gtag("event", "user_testing_internal_link")} href="#User-testing">user testing</a> is conducted on an ongoing basis with patients and healthcare professionals. For more information about input received from user testing, please contact Cognitant’s Marketing dDirector, Alex Merckx (<a onClick={() => { window.outboundLink("mailto:alex.merckx@cognitant.com"); return false }} href="mailto:alex.merckx@cognitant.com">alex.merckx@cognitant.com</a>).</p>
                 </>
             }
         ]
@@ -79,15 +79,15 @@ const content = {
         heading: "Testimonials",
         testimonialSections: [
             {
-                title: "Health Care Professionals",
+                title: "Healthcare Professionals",
                 quotes: [
                     {
-                        quote: `"I have found invaluable on a day-to-day basis in practice. It allows me to free up some of my clinical time by guiding the patient towards a reliable source of education to improve the patients understanding and knowledge. In times where General Practice is under an increased burden to do more and more, it is encouraging to know that there are ideas out there to support the GP as a clinician."`,
+                        quote: `"I have found Healthinote invaluable on a day-to-day basis in practice. It allows me to free up some of my clinical time by guiding the patient towards a reliable source of education to improve the patient's understanding and knowledge. In times where General Practice is under an increased burden to do more and more, it is encouraging to know that there are ideas out there to support the GP as a clinician."`,
                         from: "GP"
                     },
                     {
                         quote: `"This tool will enable care workers like myself to learn visually about how to effectively manage sepsis, deal with a deteriorating resident and understand the principals of infection control.  I think it will improve our confidence in managing such cases and thus improve the care received by the residents."`,
-                        from: "Care Provider"
+                        from: "Care provider"
                     },
                 ]
             },    
@@ -111,7 +111,7 @@ const content = {
         heading: "User testing",
         content: <>
             <CustomText size={theme.font.medium}>Over 60 patients and healthcare professionals (doctors, nurses, carers, physiotherapists) have been consulted as part of our ongoing user research programme.</CustomText>
-            <p>The research has highlighted the wide range of needs that healthinote users have, including cognitive load or impairment, mobility issues which make certain kinds of screen interactions more challenging, and visual impairments. This has led to careful attention being paid to reducing the amount of text on the screen, improvements to the search facility, and increasing the target size of buttons/clickable areas. Search data and app analytics have also been reviewed to identify patterns of usage.</p>
+            <p>The research has highlighted the wide range of needs that Healthinote users have, including cognitive load or impairment, mobility issues which make certain kinds of screen interactions more challenging, and visual impairments. This has led to careful attention being paid to reducing the amount of text on the screen, improvements to the search facility, and increasing the target size of buttons/clickable areas. Search data and app analytics have also been reviewed to identify patterns of usage.</p>
             <p>Users have been shown designs and prototypes to help to test the quality of the designs and enable us to improve the service.</p>
             <p>Some comments from users involved in the testing include:</p>
             <ul>
@@ -120,7 +120,7 @@ const content = {
                 <li><i>"I like this because you can digest it at your leisure."</i>&nbsp;Nurse, 52</li>
                 <li><i>"This is really good. This is something that a lot of patients and carers would like."</i>&nbsp;Nurse, 52</li>
                 <li><i>"It's easy to navigate."</i>&nbsp;Male, 31</li>
-                <li><i>"This is easier to digest than what I find online. Like the visual aids, [and I] like to know what’s causing the condition. My GP wouldn’t always have time to talk about it, they’d just talk about treatment. It’s really thorough. It goes into the background before talking about treating it, I like that."</i>&nbsp;Female, 31</li>
+                <li><i>"This is easier to digest than what I find online. I like the visual aids, [and I] like to know what’s causing the condition. My GP wouldn’t always have time to talk about it, they’d just talk about treatment. It’s really thorough. It goes into the background before talking about treating it, I like that."</i>&nbsp;Female, 31</li>
             </ul>
         </> 
     },
@@ -130,7 +130,7 @@ const content = {
             {
                 image: require("../images/team/tim.png"),
                 name: 'Dr Tim Ringrose',
-                position: 'Chief Executive Office and Founder',
+                position: 'Chief Executive Officer and Founder',
                 color: theme.color.orange,
                 links: {
                     twitter: 'https://twitter.com/timringrose',

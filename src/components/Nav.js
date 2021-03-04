@@ -6,7 +6,6 @@ import theme from '../styles/theme'
 import { useStaticQuery, graphql } from "gatsby"
 
 import healthinote from '../images/healthinote.png'
-import healthinoteTagline from '../images/healthinote-tagline.png'
 
 export default function Nav ({ setModal }) {
     const [navOpen, setNavOpen] = useState(false)
@@ -62,7 +61,7 @@ export default function Nav ({ setModal }) {
         },
         {
             text: 'Contact',
-            action: () => setModal(<>If you have any questions or suggestions for improvement of our service, feel free to contact us at <Link to="mailto:hello@healthinote.com" style={navLinkStyle({ active: true, margin: false })}>hello@healthinote.com</Link>.</>)
+            action: () => setModal(<>If you have any questions or suggestions for improvement of our service, feel free to contact us at <a onClick={() => { window.outboundLink("mailto:hello@healthinote.com"); return false }} href="mailto:hello@healthinote.com" style={navLinkStyle({ active: true, margin: false })}>hello@healthinote.com</a>.</>)
         }
     ]
 
@@ -70,21 +69,25 @@ export default function Nav ({ setModal }) {
         <NavWrapper navOpen={navOpen}>
             <FlexWrapper>
                 <LinkWrapper>
-                    {links.map(({text,link, action}, key) => action ? <span key={key} style={navLinkStyle({ active: false, margin: true })} onClick={action}>{text}</span> : <Link to={link} style={navLinkStyle({ active: checkActive(link), margin: true })} onClick={() => setNavOpen(false)} key={key}>{text}</Link>)}
+                    {links.map(({text,link, action}, key) => action ? 
+                        <span key={key} onClick={() => { window.gtag("event", `nav_${text}`); action() }} style={navLinkStyle({ active: false, margin: true })} role="button" tabIndex={0}>{text}</span>
+                    : 
+                        <Link key={key} onClick={() => { window.gtag("event", `internal_link_${text}`); setNavOpen(false) }} style={navLinkStyle({ active: checkActive(link), margin: true })} to={link}>{text}</Link>
+                    )}
                 </LinkWrapper>
                 {!navOpen && <ImageWrapper>
                     <img style={{ width: "100%" }} src={healthinote} alt="Healthinote" />
                 </ImageWrapper>}
                 {!navOpen && <LinkWrapper>
-                    Powered by&nbsp;<Link style={navLinkStyle({ active: true, margin: false })} to="https://www.cognitant.com">Cognitant Group</Link>
+                    Powered by&nbsp;<a onClick={() => { window.outboundLink("https://www.cognitant.com"); return false }} style={navLinkStyle({ active: true, margin: false })}  href="https://www.cognitant.com">Cognitant Group</a>
                 </LinkWrapper>}
             </FlexWrapper>
         </NavWrapper>
         <MobileNav>
-            <MobileNavButton onClick={() => setNavOpen(!navOpen)}>
+            <MobileNavButton onClick={() => { window.gtag("event", "nav_toggle_menu"); setNavOpen(!navOpen) }}>
                 <Img fluid={navOpen ? images.cancel.childImageSharp.fluid : images.openMenu.childImageSharp.fluid}/>
             </MobileNavButton>
-            <MobileNavLogo onClick={() => setNavOpen(!navOpen)}>
+            <MobileNavLogo>
                 <Img style={{ width: "180px", objectFit: "containt" }} fluid={images.healthinoteTagline.childImageSharp.fluid} navOpen={navOpen} />
             </MobileNavLogo>
         </MobileNav>

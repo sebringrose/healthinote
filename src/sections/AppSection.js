@@ -1,14 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { graphql, useStaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
 
 import theme from '../styles/theme'
 
 import {
     CenterFlex,
     CustomText,
-    FlexWrapper,
 } from '../components/StyledComponents'
 
 export default function AppSection({ content, reverse, background }) {
@@ -29,8 +26,8 @@ export default function AppSection({ content, reverse, background }) {
                     {content.download && <>
                         {content.download.text && <CustomText size={theme.font.default} weight={600} color={theme.color.orange} margin="1rem 0 0">{content.download.text}</CustomText>}
                         <CenterFlex justify="space-around">
-                            {content.download.googleLink && <a href={content.download.googleLink}><img style={{ margin: "1rem", width: "200px" }} src={require("../images/google-play.png")} alt="google-play-store"/></a>}
-                            {content.download.iosLink && <a href={content.download.iosLink}><img style={{ margin: "1rem", width: "200px"}} src={require("../images/app-store.png")} alt="apple-app-store"/></a>}
+                            {content.download.googleLink && <a onClick={() => { window.outboundLink(content.download.googleLink); return false }} href={content.download.googleLink}><img style={{ margin: "1rem", width: "200px" }} src={require("../images/google-play.png")} alt="google-play-store"/></a>}
+                            {content.download.iosLink && <a onClick={() => { window.outboundLink(content.download.iosLink); return false }} href={content.download.iosLink}><img style={{ margin: "1rem", width: "200px"}} src={require("../images/app-store.png")} alt="apple-app-store"/></a>}
                         </CenterFlex>
                     </>}
                 </AppText>

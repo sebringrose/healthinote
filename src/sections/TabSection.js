@@ -14,8 +14,8 @@ export default function TabSection({ content }) {
     return (<>
         <CenterFlex column align="center" width="100%" maxWidth="2000px">
             <CustomText margin="2rem" size={theme.font.large} color={theme.color.blue} weight="600">{content.heading}</CustomText>
-            <FlexWrapper justify="center" maxWidth="750px">
-                {content.tabs.map((tab, i) => <Tab key={i} style={{ borderTopLeftRadius: i === 0 ? "1rem" : 0, borderTopRightRadius: i === 2 ? "1rem" : 0 }} active={selectedTab === i} onClick={() => setSelectedTab(i)}>{tab.title}</Tab>)}
+            <FlexWrapper justify="center" width="100%" maxWidth="1000px">
+                {content.tabs.map((tab, i) => <Tab key={i} style={{ margin: i === 0 ? 0 : i === 2 ? 0 : "0 5px", borderTopLeftRadius: i === 0 ? "1rem" : 0, borderTopRightRadius: i === 2 ? "1rem" : 0 }} active={selectedTab === i} onClick={() => { window.gtag('event', `homepage_tab_${i}`); setSelectedTab(i) }}>{tab.title}</Tab>)}
             </FlexWrapper>
             {content.tabs.map((tab, i) => <TabContent key={i} active={selectedTab === i}>
                 {tab.content}

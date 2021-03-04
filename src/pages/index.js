@@ -129,7 +129,7 @@ const content = {
                             ]
                         },
                         text: [
-                            <>For more information, go to <a href="https://cognitant.com">Cognitant.com</a> or contact <a href="mailto:hello@cognitant.com">hello@cognitant.com</a>.</>,
+                            <>For more information, go to <a onClick={() => { window.outboundLink("https://www.cognitant.com"); return false }} href="https://cognitant.com">Cognitant.com</a> or contact <a onClick={() => { window.outboundLink("mailto:hello@cognitant.com"); return false }} href="mailto:hello@cognitant.com">hello@cognitant.com</a>.</>,
                         ]
                     }} />
                 </>

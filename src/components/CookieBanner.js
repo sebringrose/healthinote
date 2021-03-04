@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import CookieConsent from "react-cookie-consent"
+import ga from "../scripts/ga" 
 
 const BannerContent = ({ setCookieOverlay }) => {
   // this is a cheaky way to setCookieOverlay true only if banner is display without editing the actual banner component
@@ -17,7 +18,7 @@ const BannerContent = ({ setCookieOverlay }) => {
         We use cookies for anonymous analytics purposes only. Detailed
         information regarding the GDPR and ePrivacy Directive compliant storage
         and usage of personal data can be found in our{" "}
-        <a href="https://cognitant.com/privacy">Privacy Policy</a>. Subject to
+        <a onClick={() => { window.outboundLink("https://cognitant.com/privacy"); return false }} href="https://cognitant.com/privacy">Privacy Policy</a>. Subject to
         change.
       </p>
       <p style={{ fontSize: "0.6rem" }}>
@@ -43,24 +44,7 @@ const CookieBanner = ({ setCookieOverlay }) => (
     declineButtonStyle={{ background: "none", textDecoration: "underline" }}
     buttonWrapperClasses="cookie-buttons"
     onAccept={() => {
-      // Global site tag (gtag.js) - Google Analytics
-      let id = "###siteId###"
-
-      let gaScript1 = document.createElement("script")
-      gaScript1.async = ""
-      gaScript1.src = `https://www.googletagmanager.com/gtag/js?id=${id}`
-
-      let gaScript2 = document.createElement("script")
-      gaScript2.text = `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', '${id}');
-        `
-
-      document.body.append(gaScript1)
-      document.body.append(gaScript2)
+      ga()
       setCookieOverlay(false)
     }}
     onDecline={() => setCookieOverlay(false)}

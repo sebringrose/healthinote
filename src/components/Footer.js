@@ -6,21 +6,21 @@ export default function Footer() {
     return (
         <FlexWrapper>
             <LinkWrapper>
-                Contact us for more information at&nbsp;<a href="mailto:hello@healthinote.com">hello@healthinote.com</a>
+                Contact us for more information at&nbsp;<a onClick={() => { window.outboundLink("mailto:hello@healthinote.com"); return false }} href="mailto:hello@healthinote.com">hello@healthinote.com</a>
             </LinkWrapper>
             <FlexWrapper row>
-                <a target="_blank" rel="noreferrer" href="https://www.twitter.com/cognitant">
+                <a onClick={() => { window.outboundLink("https://www.twitter.com/cognitant"); return false }}  rel="noreferrer" href="https://www.twitter.com/cognitant">
                     <div style={{width: '55px', margin: '0 15px'}}>
                         <img style={{ width: "100%" }} src={require("../images/twitter.svg")} alt="twitter"/>
                     </div>
                 </a>
-                <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/company/cognitant/">
+                <a onClick={() => { window.outboundLink("https://www.linkedin.com/company/cognitant/"); return false }}  rel="noreferrer" href="https://www.linkedin.com/company/cognitant/">
                     <div style={{width: '55px', margin: '0 15px'}}>
                         <img style={{ width: "100%" }} src={require("../images/linkedin.svg")} alt="linkedin"/>
                     </div>
                 </a>
             </FlexWrapper>
-            <CustomText center color={'white'} style={{ margin: "20px" }}>© 2021 Cognitant. Registered No. 11282547 <a href="https://cognitant.com/privacy" style={{ color: "white", textDecoration: "underline", fontWeight: 400 }}>Privacy policy</a></CustomText>
+            <CustomText center color={'white'} style={{ margin: "20px" }}>© 2021 Cognitant. Registered No. 11282547 <a onClick={() => { window.outboundLink("https://cognitant.com/privacy"); return false }} href="https://cognitant.com/privacy" style={{ color: "white", textDecoration: "underline", fontWeight: 400 }}>Privacy policy</a></CustomText>
         </FlexWrapper>
     )
 }

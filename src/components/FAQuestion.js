@@ -1,21 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import theme from '../styles/theme'
 
 import { CustomText } from '../components/StyledComponents'
 
-export default function FAQuestion({ question, answer, last }) {
-  const [expanded, setExpanded] = useState(false)
-
+export default function FAQuestion({ question, answer, last, open, setOpen }) {
     return (
         <QuestionBlock last={last}>
-            <Question style={{ cursor: "pointer" }} onClick={() => setExpanded(!expanded)}>
+            <Question style={{ cursor: "pointer" }} onClick={() => { window.gtag("event", `FAQ_click_${question}`); setOpen() }}>
                 <div style={{ flex: 1 }}>
                     <CustomText size={theme.font.medium} color={theme.color.orange} weight={600}>{question}</CustomText>
                 </div>
-                <img src={require('../images/chevron_orange.png')} style={{ height: "36px", marginLeft: "1rem", transform: `rotate(${expanded ? "180" : 0}deg)` }} alt="chevron" />
+                <img src={require('../images/chevron_orange.png')} style={{ height: "36px", marginLeft: "1rem", transform: `rotate(${open ? "180" : 0}deg)` }} alt="chevron" />
             </Question>
-            <Answer expanded={expanded}>{answer}</Answer>
+            <Answer expanded={open}>{answer}</Answer>
         </QuestionBlock>
     )
 }

@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Nav from './Nav'
 import styled from 'styled-components'
 import Footer from './Footer'
 import theme from '../styles/theme'
 
 import CookieBanner from "./CookieBanner"
+import ga from "../scripts/ga"
 
 export default function Layout({modal, setModal, children}) {
   const [cookieOverlay, setCookieOverlay] = useState(false)
+
+  useEffect(() => {
+    let consentCookie = document.cookie.split('; ').find(row => row.startsWith('CookieConsent'))
+    consentCookie = consentCookie ? consentCookie.split('=')[1] : null
+    if (consentCookie) ga()
+  }, [])
 
   return (<Wrapper overlay={cookieOverlay}>
     <CookieBanner setCookieOverlay={setCookieOverlay}/>
@@ -26,7 +33,7 @@ const Wrapper = styled.div`
     width: 100%;
     font-family: mont;
     background-color: white;
-    overflow: ${({overlay}) => overlay ? "hidden" : "scroll"}
+    overflow: ${({overlay}) => overlay ? "hidden" : "scroll"};
 `;
 
 const Modal = styled.div`

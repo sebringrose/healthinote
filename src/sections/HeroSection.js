@@ -11,7 +11,7 @@ import {
 export default function HeroSection({ content }) {
     return (
         <CenterFlex justify="center" align="center" margin="2rem auto" maxWidth="1500px">
-            <a href={content.linkedVideo} target="_blank">
+            <a onClick={() => { window.outboundLink(content.linkedVideo); return false }} href={content.linkedVideo}>
                 <HeroVideo preload="true" autoPlay muted loop playsInline>
                     <source src={content.video} type="video/mp4" />
                 </HeroVideo>

@@ -13,7 +13,7 @@ export default function VideoSection({ content, reverse, background }) {
     <CenterFlex background={background} width="100%">
         <CenterFlex justify="center" align="center" margin="1.6rem 0" padding="1rem" width="100%" maxWidth="800px" reverse={reverse}>
             {content.linkedVideo ? 
-                <a href={content.linkedVideo} target="_blank">
+                <a onClick={() => { window.outboundLink(content.linkedVideo); return false }} href={content.linkedVideo} >
                     <Video preload="true" autoPlay muted loop playsInline>
                         <source src={content.video} type="video/mp4" />
                     </Video>

@@ -25,12 +25,12 @@ const Member = ({setModal, image, name, color, position, links, more}) => <CardB
     <CardText size={theme.font.medium} weight='600'>{name}</CardText>
     <CardText size={theme.font.default}>{position}</CardText>
     <CenterFlex align='center'>
-    {links.twitter && <a target="_blank" rel="noreferrer" href={links.twitter}>
+    {links.twitter && <a onClick={() => { window.outboundLink(links.twitter); return false }}  rel="noreferrer" href={links.twitter}>
         <div style={{width: '30px', margin: '10px'}}>
         <img src={require("../images/twitter.svg")} alt="twitter"/>
         </div>
     </a>}
-    {links.linkedin && <a target="_blank" rel="noreferrer" href={links.linkedin}>
+    {links.linkedin && <a onClick={() => { window.outboundLink(links.linkedin); return false }}  rel="noreferrer" href={links.linkedin}>
         <div style={{width: '30px', margin: '10px'}}>
         <img src={require("../images/linkedin.svg")} alt="linkedin"/>
         </div>
@@ -41,7 +41,7 @@ const Member = ({setModal, image, name, color, position, links, more}) => <CardB
         size={theme.font.default} 
         color={theme.color.orange}
         style={{ marginTop: "auto", cursor: "pointer" }}
-        onClick={() => setModal(more)}
+        onClick={() => { window.gtag("event", `team_more_${name}`); setModal(more) }}
     >
         Read more
     </CustomText>}
